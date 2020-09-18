@@ -1,0 +1,171 @@
+@charset "utf-8";
+/* CSS Document */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,700;1,400&family=Merriweather:wght@300;400;700&display=swap');
+
+body{
+	background-color: #F2F2F2;
+}
+*
+{
+	font-family: 'Lato', sans-serif;
+	letter-spacing:1px;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Merriweather', serif;
+}
+#whitebox{
+	width:85%;
+	
+	min-height:1000px; 
+	background-color: white;
+	margin: auto;
+}
+#header{
+	padding-top:25px;
+	padding-left:25px;
+}
+.sitename
+{
+	font-size: 2em;
+	font-weight: bold;
+}
+#left, #right 
+{
+	float:left;
+}
+#left {
+	width: 50%;
+	
+}
+#right {
+	width: 50%;
+	text-align:right;
+}
+#left ul, #right ul {
+	list-style-type: none;
+}
+#right ul 
+{
+	float:right;
+}
+#left ul li , #right ul  li {
+	display: table-cell;
+	vertical-align:middle;
+	height:100px;
+}
+#menu {
+	background-color: #aa4a30;
+	padding:20px 0px;
+	box-shadow: 0px 5px 3px #aaaaaa, 0px -5px 3px #aaaaaa;
+
+}
+#menu ul {
+	list-style-type:none;
+}
+#menu ul li {
+	display:inline;
+}
+#menu ul li a:link, #menu ul li a:visited 
+{
+	color:white;
+	text-decoration:none;
+	padding:10px 15px;
+	text-transform:uppercase;
+	letter-spacing:1px;
+}
+#menu ul li a:hover
+{
+	text-decoration:underline;
+	font-weight:bold;
+}
+#pageheading
+{
+	padding-left:20px;
+	padding-top:20px;
+}
+#product tr td {
+	width:25%;
+	text-align:justify;
+}
+
+.block {
+    display: flex;
+}
+.cell {
+    flex-grow: 1;
+    margin: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+	text-align:justify;
+	padding-left:10px;
+	padding-right:10px;
+} 
+.cell img {
+	width: 100%;
+	height:200px;
+}  
+/* slide code start */
+.slider .slider-item{
+  display: none;
+  animation: reveal .5s ease-in-out;
+}
+.slider .slider-item.active {
+  display: block;
+}
+.slider .dots {
+  text-align: center;
+  padding: 10px;
+  margin-top:-50px;
+}
+.slider .dots li {
+  cursor: pointer;
+  display: inline-block;
+  background: #ffffff;
+  color: #fff;
+  padding: 7px 11px;
+  line-height: .5;
+  border-radius: 50%;
+  text-indent: -9999px;
+  opacity: .5;
+  -webkit-transition: opacity .2s;
+  -o-transition: opacity .2s;
+  transition: opacity .2s;
+}
+.slider .dots li.active{
+  opacity: 1;
+}
+@keyframes reveal{
+  from{
+	opacity: 0;
+  }
+  to{
+	opacity: 1;
+  }
+}
+.slider-item img 
+{
+	width:100%;
+	height:200px; /* not recommanded */
+}
+
+/* slide code ends */
+.footer 
+{
+	padding:10px;
+}
+.footer * {
+	color:rgb(97, 79, 79);
+	letter-spacing: 1px;
+	line-height: 125%;
+	text-align: center;
+}
+.content {
+	padding:10px;
+	letter-spacing: 1px;
+	line-height: 125%;
+}
+.content p {
+	text-indent: 25px;
+	margin-bottom:20px;
+	text-align: justify;
+}

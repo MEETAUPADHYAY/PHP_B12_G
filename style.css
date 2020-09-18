@@ -1,0 +1,40 @@
+@charset "utf-8";
+/* CSS Document */
+*
+{
+	font-family: Consolas, Andale Mono, Lucida Console, Lucida Sans Typewriter, Monaco, Courier New, monospace;
+	
+}
+body{
+	background-color: aliceblue;
+}
+#stockmarket
+{
+	float: left;
+	width:50%;
+	background-color: cornsilk;
+	border:2px solid red;
+	box-sizing: border-box;
+	padding: 15px;
+}
+#stockmarket p {
+	text-align: justify;
+	text-indent: 25px;
+	background-color: brown;
+	color:white;
+	padding:5px;
+	box-shadow: 5px 5px 3px 3px red;
+}
+
+#corona
+{
+	float: left;
+	width:50%;
+	background-color: gainsboro;
+	border:2px solid red;
+	box-sizing: border-box;
+	padding: 15px;
+}
+#corona p {
+	text-align: right;
+}

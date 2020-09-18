@@ -1,0 +1,51 @@
+@charset "utf-8";
+/* CSS Document */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Pacifico&family=Roboto:wght@500&display=swap');
+.MyText{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.2rem;
+}
+.MyHeading{
+	font-family: 'Pacifico', cursive;
+	font-size: 1.2rem;
+	border-bottom:2px solid black;
+}
+.ColorFullText{
+	color:#0000ff;
+	text-align: center;
+}
+.ProfessionalText{
+	text-align: justify;
+	letter-spacing: 1px;
+}
+b {
+	display: block;
+}
+ul {
+	list-style-type: none;
+}
+ul li {
+	display: inline;
+	
+}
+a:link, a:visited /*  Pseudo class */
+{
+	text-decoration: none;
+	text-transform: uppercase;
+	font-family: 'Pacifico', cursive; 
+	background-color: beige;
+	padding: 10px;
+}
+
+
+a:hover 
+{
+	background-color: blue;
+	color:white;
+	box-shadow: 2px 2px 3px 3px red;
+}
+a:active 
+{
+	background-color: red;
+	color:white;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2></h2>
+    <form action="lesson6.html" method="post" autocomplete="on" 
+    enctype="multipart/form-data" >
+        UserName (minimum 10 letter and maximum 20 letter) <br>
+        <input type="text" name="txtusername" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{9,20}$" required> <br>
+        Password (lowercase, uppercase, digit, special character, minimum 8 letters) <br>
+        <input type="password" name="txtpassword" required
+        pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" /> <br>
+        Aadhar card 16 digit number <br> 
+        <input type="text" name="" pattern="[0-9]{16}" required /> <br>
+        Select Photo <br>
+        <input type="file" name="filphoto" accept="image/*" /> <br />
+
+        Select Resume (only pdf) <br>
+        <input type="file" name="filphoto" accept=" application/pdf" /> <br />
+
+        <input type="submit" value="submit"  /> 
+
+    </form>
+</body>
+</html>

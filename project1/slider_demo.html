@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+	.slider .slider-item{
+      display: none;
+      animation: reveal .5s ease-in-out;
+    }
+    .slider .slider-item.active {
+      display: block;
+    }
+    .slider .dots {
+      text-align: center;
+      padding: 10px;
+    }
+    .slider .dots li {
+      cursor: pointer;
+      display: inline-block;
+      background: #333;
+      color: #fff;
+      padding: 7px 11px;
+      line-height: .5;
+      border-radius: 50%;
+      text-indent: -9999px;
+      opacity: .5;
+      -webkit-transition: opacity .2s;
+      -o-transition: opacity .2s;
+      transition: opacity .2s;
+    }
+    .slider .dots li.active{
+      opacity: 1;
+    }
+    @keyframes reveal{
+      from{
+        opacity: 0;
+      }
+      to{
+        opacity: 1;
+      }
+    }
+</style>
+</head>
+<body>
+	<div class="container">
+      <div id="slider" class="slider">
+        <div class="slider-item active"><img src="https://loremflickr.com/1360/300/nature?random=1" alt="" class="img-fluid"></div>
+        <div class="slider-item"><img src="https://loremflickr.com/1360/300/nature?random=2" alt="" class="img-fluid"></div>
+        <div class="slider-item"><img src="https://loremflickr.com/1360/300/nature?random=3" alt="" class="img-fluid"></div>
+        <ul id="dots" class="list-inline dots"></ul>
+      </div>
+      
+    </div>
+	<script>
+		var slider = document.getElementById('slider')
+var sliderItem = slider.getElementsByTagName('div');
+var dots = document.getElementById('dots');
+var dotsChild = document.getElementById('dots').getElementsByTagName('li');
+for (i = 0; i < sliderItem.length; i++) {
+  dots.appendChild(document.createElement('li'));
+  dotsChild[i].classList.add('list-inline-item');
+  dotsChild[i].setAttribute("id", i);
+  dotsChild[i].innerHTML = i;
+  dotsChild[0].classList.add('active');
+  dotsChild[i].addEventListener("click", runSlider);
+}
+function runSlider(){
+  var dnum = this.getAttribute("id");
+  for (i = 0; i < sliderItem.length; i++) {
+    sliderItem[i].classList.remove('active');
+    sliderItem[dnum].classList.add('active');
+    dotsChild[i].classList.remove('active');
+    dotsChild[dnum].classList.add('active');
+  }
+}
+	</script>
+</body>
+</html>

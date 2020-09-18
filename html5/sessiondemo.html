@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- its not good idea to put javascript code in head section  -->
+</head>
+<body>
+    <h2>Session Storage Demo</h2>
+    <form action="" method="post" >
+        <table width='50%' align="center" border="2" cellpadding=10>
+            <tr>
+                <td>
+                    Couter value
+                </td>
+                <td>
+                    <input type="text" name="txtcounter" id="txtcounter" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="button" value="Increase Counter" id="btnincrease" onclick="IncreaseCount()" />
+                    <input type="button" value="Reset Counter" id="btnreset" onclick="resetCount()" />
+                </td>
+            </tr>
+        </table>
+    </form>
+    <!-- ideal place to write javascript code -->
+    <script>
+            //alert(localStorage.getItem("counter"));
+            if(sessionStorage.getItem("counter")==null)
+            {
+                //no such key exists counter  and so let us create key 
+                sessionStorage.setItem("counter",1);
+            }
+            document.getElementById("txtcounter").value = sessionStorage.getItem("counter");
+            function IncreaseCount()
+            {
+                var count = parseInt(sessionStorage.getItem("counter"));
+                count = count + 1;
+                sessionStorage.setItem("counter",count);
+                document.getElementById("txtcounter").value = sessionStorage.getItem("counter");
+            }
+            function resetCount()
+            {
+                sessionStorage.removeItem("counter"); //it will delete key
+                sessionStorage.setItem("counter",1);
+                document.getElementById("txtcounter").value = sessionStorage.getItem("counter");
+            }
+    </script>
+</body>
+</html>
