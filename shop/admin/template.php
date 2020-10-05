@@ -18,7 +18,7 @@
     <section class="content">
       <!-- Default box -->
       <div class="card">
-        <div class="card-header">
+      <div class="card-header bg-primary text-white">
           <h3 class="card-title">Section Title</h3>
 
           <div class="card-tools">
