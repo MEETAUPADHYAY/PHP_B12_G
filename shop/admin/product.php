@@ -34,6 +34,9 @@
           </div>
         </div>
         <div class="card-body">
+        <p class='text-right'>
+          <a class='btn btn-success m-2' href='add-product.php'>Add Product</a>
+        </p>
 				<table id="myTable" class="table table-bordered table-striped table-hover" width="100%">
 				    <thead>
 				        <th width='7%'>Sr No</th>
