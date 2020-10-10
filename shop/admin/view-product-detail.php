@@ -1,5 +1,5 @@
-</head>
 <?php  require_once('inc/header_part.php'); ?>
+</head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <?php require_once('inc/links.php'); ?>

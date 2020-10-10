@@ -1,7 +1,7 @@
+<?php  require_once('inc/header_part.php'); ?>
 <link rel="stylesheet" type="text/css" 
       href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
 </head>
-<?php  require_once('inc/header_part.php'); ?>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <?php require_once('inc/links.php'); ?>
