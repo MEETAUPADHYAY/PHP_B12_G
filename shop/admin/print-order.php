@@ -1,11 +1,19 @@
 <html>
     <head>
     <title></title>
+<style>
+	/*  code to hide button in print */
+	@media print {
+  #printbutton {
+    display: none;
+  }
+}
+</style>
 </head>
 <body style='padding:20px'>
             <h1 style='text-align:center'>Order Bill</h1>
             <p style='text-align:right'>
-                <button type=button onclick="print();">Print</button>
+                <button id="printbutton" type=button onclick="print();">Print</button>
             </p>
           		  <table border='2' width='100%' style='margin-bottom:10px' cellpadding=10>
   				    <tr>

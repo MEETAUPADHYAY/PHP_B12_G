@@ -26,6 +26,12 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
          <li class="nav-header">Links</li>
          <li class="nav-item">
+            <a href="dashboard.php" class="nav-link">
+              <i class="nav-icon far fa-user text-danger"></i>
+              <p class="text">Dashboard / Home</p>
+            </a>
+          </li>
+         <li class="nav-item">
             <a href="order.php" class="nav-link">
               <i class="nav-icon far fa-user text-danger"></i>
               <p class="text">Orders</p>
@@ -53,6 +59,12 @@
             <a href="category.php" class="nav-link">
               <i class="nav-icon far fa-user text-danger"></i>
               <p class="text">Category</p>
+            </a>
+          </li>
+           <li class="nav-item">
+            <a href="change-password.php" class="nav-link">
+              <i class="nav-icon far fa-user text-danger"></i>
+              <p class="text">Change password</p>
             </a>
           </li>
           
