@@ -1,3 +1,4 @@
+</head>
 <?php  require_once('inc/header_part.php'); ?>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
