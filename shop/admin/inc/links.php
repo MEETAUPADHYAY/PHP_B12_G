@@ -25,6 +25,30 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
          <li class="nav-header">Links</li>
+         <li class="nav-item">
+            <a href="order.php" class="nav-link">
+              <i class="nav-icon far fa-user text-danger"></i>
+              <p class="text">Orders</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="user.php" class="nav-link">
+              <i class="nav-icon far fa-user text-danger"></i>
+              <p class="text">Users</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="product.php" class="nav-link">
+              <i class="nav-icon far fa-user text-danger"></i>
+              <p class="text">Product</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="slider.php" class="nav-link">
+              <i class="nav-icon far fa-user text-danger"></i>
+              <p class="text">Slider</p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="category.php" class="nav-link">
               <i class="nav-icon far fa-user text-danger"></i>
@@ -32,19 +56,7 @@
             </a>
           </li>
           
-          <li class="nav-item">
-            <a href="product.php" class="nav-link">
-              <i class="nav-icon far fa-user text-danger"></i>
-              <p class="text">Product</p>
-            </a>
-          </li>
-          
-          <li class="nav-item">
-            <a href="slider.php" class="nav-link">
-              <i class="nav-icon far fa-user text-danger"></i>
-              <p class="text">Slider</p>
-            </a>
-          </li>
+         
         </ul>
       </nav>
     </div>
