@@ -1,7 +1,12 @@
-
-<?php  require_once('inc/header_part.php'); ?>
+<?php  
+  require_once('inc/header_part.php'); 
+  require_once("../inc/connection.php");  
+?>
 <link rel="stylesheet" type="text/css" 
       href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
+<style>
+	.small {height:150px!important;width:150px !important}
+</style>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -66,7 +71,8 @@
                   <button type="reset" class="btn btn-default">Reset</button>
             </div>
             <?php 
-               alert($_REQUEST['message']);
+               if(isset($_REQUEST['message'])==true) 
+                  alert($_REQUEST['message']);
             ?>  
             </form>
         </div>
@@ -101,22 +107,42 @@
                         </tr>
                     </thead>
                     <tbody>
+      <?php 
+          $sql = "select * from category where isdeleted=0 order by id desc";
+          //insert update delete select all queries can be executed using library function mysqli_query
+		  $count=1;
+          $category = mysqli_query($link,$sql) or die(mysqli_error($link));
+		  while($row = mysqli_fetch_assoc($category))
+		  //fetch one row(record ) from $category variable and store it as associative array in $row 
+          {
+      ?>
                         <tr>
-                            <td>1</td>
-                            <td>books</td>
-                            <td></td>
-                            <td>books are the goods to read</td>
-                            <td>yes</td>
+                            <td><?php echo $count++; ?> </td>
+                            <td><?php echo $row['title'] ?></td>
+                            <td>
+                              <img src="../images/category/<?php echo $row['photo']; ?>" class="img-fluid small" />
+                            </td>
+                            <td><?php echo $row['detail'] ?></td>
+                            <td>
+                                <?php 
+                                    if($row['islive']=="1")
+                                      echo "Live";
+                                    else 
+                                      echo "Not Live";
+                                ?>
+                            </td>
                             <td>
                                 <a href="edit-category.php">
                                     <i class="fa fa-edit fa-2x"></i>
                                 </a>
-                                <a href="delete-category.php">
+                                <a href="delete-category.php?id=<?php echo $row['id']; ?>">
                                     <i class="fa fa-trash fa-2x"></i>
                                 </a>
                             </td>
                         </tr>
-                       
+        <?php 
+		  }
+		?> 
                     </tbody>
 
                 </table>

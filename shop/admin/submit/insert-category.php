@@ -7,21 +7,19 @@
     }
     else
     {
-       //step -1 connect with database server 
-       $link = mysqli_connect("localhost","root","");
-       //step -2 select database database
-       mysqli_select_db($link,"php_b12_g");
+       require_once("../../inc/connection.php");
        //step -3 i will build query and run query 
        $title = $_POST['txttitle'];
        $detail = $_POST['txtdetail'];
        $islive = $_POST['rdoislive'];
-       $photo = $_FILES['filphoto']['name'];
+       $photo = rand(10,99) . rand(10,99) . rand(10,99) . "-" . $_FILES['filphoto']['name'];
+       move_uploaded_file($_FILES['filphoto']['tmp_name'],"../../images/category/$photo");
        $sql = "insert into category (title,detail,photo,islive) values ('$title','$detail','$photo','$islive')";
        //echo $sql; exit(1);
        //insert update delete select , we use mysqli_query
        mysqli_query($link,$sql) or die(mysqli_error($link));
        $message = "Category Added Successfully";
-       //echo $message;
+    
        header("location:../category.php?message=$message");
     }
 ?>
