@@ -52,7 +52,7 @@
   		                <td>Fri 09-10-2020</td>
   		                <td>25000</td>
   		                <td>
-  		                    <a href=""><i class='fa fa-eye'></i></a>
+  		                    <a href="order.php"><i class='fa fa-eye'></i></a>
   		                </td>
   		            </tr>
   		        </tbody>

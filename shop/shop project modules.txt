@@ -37,11 +37,8 @@ Types of users
                 users
                     id,email,mobile,password,created_at,islive,isdeleted
             Dashboard (class)
-
             login (class)
-
             change password (class)
-
             forgot password (class)
 
     buyers /register users (class)

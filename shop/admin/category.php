@@ -34,19 +34,19 @@
           </div>
         </div>
         <div class="card-body">
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="submit/insert-category.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
                     <label for="txttitle">Title</label>
                     <input type="text" class="form-control" id="txttitle" name="txttitle" placeholder="" />
             </div>
             <div class="form-group">
-                    <label for="">Detail</label>
-                    <textarea class="form-control" id=""  >
+                    <label for="txtdetail">Detail</label>
+                    <textarea class="form-control" id="txtdetail" name="txtdetail"  >
                     </textarea>
             </div>
             <div class="form-group">
                     <label for="filphoto">Select Photo</label>
-                    <input type="file" class="form-control" id="filphoto" name="filphoto"  placeholder="" />
+                    <input type="file" class="form-control" id="filphoto" name="filphoto"  placeholder="" accepts="image/*" />
             </div>
             <b>Is Live?</b>
             <div class="form-group">
@@ -61,7 +61,7 @@
              
             </div>
             <div class="form-group">
-                  <button type="submit" class="btn btn-primary">Save</button>
+                  <button type="submit" class="btn btn-primary" name='btnsubmit'>Save</button>
                   <button type="reset" class="btn btn-default">Reset</button>
             </div>
             </form>
