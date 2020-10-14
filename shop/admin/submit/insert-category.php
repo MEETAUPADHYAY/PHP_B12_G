@@ -8,7 +8,7 @@
     else
     {
        //step -1 connect with database server 
-       $link = mysqli_query("localhost","root","");
+       $link = mysqli_connect("localhost","root","");
        //step -2 select database database
        mysqli_select_db($link,"php_b12_g");
        //step -3 i will build query and run query 
@@ -16,10 +16,12 @@
        $detail = $_POST['txtdetail'];
        $islive = $_POST['rdoislive'];
        $photo = $_FILES['filphoto']['name'];
-       $sql = "insert into category ('title','detail','photo','islive') values ('$title','$detail','$photo','$islive')";
+       $sql = "insert into category (title,detail,photo,islive) values ('$title','$detail','$photo','$islive')";
+       //echo $sql; exit(1);
        //insert update delete select , we use mysqli_query
        mysqli_query($link,$sql) or die(mysqli_error($link));
        $message = "Category Added Successfully";
-       header("location:../category.php?message=input is required");
+       //echo $message;
+       header("location:../category.php?message=$message");
     }
 ?>

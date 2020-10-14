@@ -1,3 +1,6 @@
+<?php 
+    require_once("../inc/function.php");
+?>
 <!-- 1st resuable part-->
 <!DOCTYPE html>
 <html lang="en">
