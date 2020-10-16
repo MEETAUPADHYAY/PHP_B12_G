@@ -1,4 +1,8 @@
-<?php  require_once('inc/header_part.php'); ?>
+<?php  
+    require_once('inc/header_part.php'); 
+    require_once('../inc/connection2.php');
+    echo "done"; exit(1);
+?>
 <link rel="stylesheet" type="text/css" 
       href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
 </head>
