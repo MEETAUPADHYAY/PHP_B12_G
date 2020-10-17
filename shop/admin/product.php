@@ -1,7 +1,7 @@
 <?php  
     require_once('inc/header_part.php'); 
     require_once('../inc/connection2.php');
-    echo "done"; exit(1);
+  
 ?>
 <link rel="stylesheet" type="text/css" 
       href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
@@ -38,6 +38,10 @@
           </div>
         </div>
         <div class="card-body">
+        <?php 
+               if(isset($_REQUEST['message'])==true) 
+                  alert($_REQUEST['message']);
+        ?>
         <p class='text-right'>
           <a class='btn btn-success m-2' href='add-product.php'>Add Product</a>
         </p>
