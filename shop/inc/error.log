@@ -1,0 +1,9 @@
+
+ Error Code 1049 Error Detail  on occured at Fri 16-10-2020 08:01:02 PM in file connection.php at line no 0
+ Error Code 1049 Error Detail  on occured at Fri 16-10-2020 08:08:53 PM in file connection.php at line no 0
+ Error Code 1049 Error Detail  on occured at Fri 16-10-2020 08:10:51 PM in file connection.php at line no 0
+ Error Code 42S02 Error Detail Table 'php_b12_g.product1' doesn't exist on occured at Sat 17-10-2020 08:20:02 PM in file insert-product.php at line no 28
+ Error Code 42S02 Error Detail Table 'php_b12_g.product1' doesn't exist on occured at Sat 17-10-2020 08:23:22 PM in file insert-product.php at line no 28
+ Error Code 42S02 Error Detail Table 'php_b12_g.product1' doesn't exist on occured at Sat 17-10-2020 08:23:59 PM in file insert-product.php at line no 28
+ Error Code 42S02 Error Detail Table 'php_b12_g.product1' doesn't exist on occured at Sat 17-10-2020 08:25:28 PM in file insert-product.php at line no 28
+ Error Code 42S02 Error Detail Table 'php_b12_g.product1' doesn't exist on occured at Sat 17-10-2020 08:25:47 PM in file insert-product.php at line no 28

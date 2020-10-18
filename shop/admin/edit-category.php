@@ -1,5 +1,12 @@
+<?php  
+    require_once("../inc/connection.php");
+    require_once('inc/header_part.php'); 
+    $id = $_REQUEST['id'];
+    $sql = "select * from category where id=$id";
+    $category = mysqli_query($link,$sql) or die(mysqli_error($link));
+    $row = mysqli_fetch_assoc($category);
+?> 
 </head>
-<?php  require_once('inc/header_part.php'); ?>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <?php require_once('inc/links.php'); ?>
@@ -32,28 +39,39 @@
           </div>
         </div>
         <div class="card-body">
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="submit/update-category.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
                     <label for="txttitle">Title</label>
-                    <input type="text" class="form-control" id="txttitle" name="txttitle" placeholder="" />
+                    <input type="text" class="form-control" id="txttitle" name="txttitle" placeholder="" value="<?php echo $row['title']; ?>" required />
             </div>
             <div class="form-group">
-                    <label for="">Detail</label>
-                    <textarea class="form-control" id=""  >
+                    <label for="txtdetail">Detail</label>
+                    <textarea class="form-control" id="txtdetail" name="txtdetail"  required ><?php echo $row['detail']; ?>
                     </textarea>
             </div>
             <div class="form-group">
                     <label for="filphoto">Select Photo</label>
                     <input type="file" class="form-control" id="filphoto" name="filphoto"  placeholder="" />
+                    <br/>
+                    <img src="../images/category/<?php echo $row['photo'] ?>" class="img-fluid" />
             </div>
             <b>Is Live?</b>
+            <?php 
+                $yes = "checked";
+                $no = null;
+                if($row['islive']==0)
+                {
+                    $no ="checked";
+                    $yes = null;
+                }
+            ?>
             <div class="form-group">
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="rdoislive" value="1">
+                <input class="form-check-input" type="radio" name="rdoislive" value="1" <?php echo $yes; ?> >
                 <label class="form-check-label">Yes</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="rdoislive" value="0">
+                <input class="form-check-input" type="radio" name="rdoislive" value="0" <?php echo $no; ?> >
                 <label class="form-check-label">No</label>
               </div>
              
@@ -62,6 +80,8 @@
                   <button type="submit" class="btn btn-primary">Save Changes</button>
                   <button type="reset" class="btn btn-default">Reset</button>
             </div>
+            <input type="hidden" name="oldphoto" value="<?php echo $row['photo']; ?>" />
+            <input type="hidden" name="categoryid" value="<?php echo $row['id']; ?>" />
             </form>
         </div>
       </div>

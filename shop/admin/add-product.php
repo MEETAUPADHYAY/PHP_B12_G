@@ -32,18 +32,18 @@
           </div>
         </div>
         <div class="card-body">
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="submit/insert-product.php" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-lg-7 col-md-7 col-sm-12 col-12">
                     <div class="form-group">
                         <label for="txttitle">Title</label>
-                        <input type="text" class="form-control" id="txttitle" name="txttitle" placeholder="" />
+                        <input type="text" class="form-control" id="txttitle" name="txttitle" placeholder="" required />
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-5 col-sm-12 col-12">
                     <div class="form-group">
                     <label for='sltcategoryid'>Select Category</label>
-                    <select class="form-control" name="sltcategoryid" id='sltcategoryid'>
+                    <select class="form-control" name="sltcategoryid" id='sltcategoryid' required>
                       <option value=''>select</option>
                       <option value='1'>Boys</option>
                       
@@ -55,13 +55,13 @@
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                     <div class="form-group">
                     <label for="txtprice">Price</label>
-                    <input type="number" class="form-control" id="txtprice" name="txtprice" placeholder="" />
+                    <input type="number" class="form-control" id="txtprice" name="txtprice" placeholder="" required />
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                     <div class="form-group">
                         <label for="txtquantity">Quantity</label>
-                        <input type="number" class="form-control" id="txtquantity" name="txtquantity" placeholder="" />
+                        <input type="number" class="form-control" id="txtquantity" name="txtquantity" placeholder="" required />
                      </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12">
@@ -81,17 +81,17 @@
                 <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                     <div class="form-group">
                         <label for="filphoto">Select Photo</label>
-                        <input type="file" class="form-control" id="filphoto" name="filphoto"  placeholder="" />
+                        <input type="file" class="form-control" id="filphoto" name="filphoto" accept="image/*" required />
                      </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-12 col-12">
                     <b>Is Live?</b>
                     <div class="form-group">
                       <div class="form-check-inline">
-                        <input class="form-check-input" type="radio" name="rdoislive" value="1">
+                        <input class="form-check-input" type="radio" name="rdoislive" value="1" required>
                         <label class="form-check-label">Yes</label>
                         
-                        <input class="form-check-input ml-3" type="radio" name="rdoislive" value="0">
+                        <input class="form-check-input ml-3" type="radio" name="rdoislive" value="0" required>
                         <label class="form-check-label">No</label>
                       </div>
                       
@@ -100,11 +100,11 @@
            </div>
             <div class="form-group">
                     <label for="txtdetail">Detail</label>
-                    <textarea class="form-control" id="txtdetail" name="txtdetail" rows=3  >
+                    <textarea class="form-control" id="txtdetail" name="txtdetail" rows=3 required  >
                     </textarea>
             </div>
             <div class="form-group">
-                  <button type="submit" class="btn btn-primary">Save</button>
+                  <button type="submit" name="btnsubmit" class="btn btn-primary">Save</button>
                   <button type="reset" class="btn btn-default">Reset</button>
             </div>
             </form>

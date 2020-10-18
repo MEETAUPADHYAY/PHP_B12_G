@@ -4,6 +4,7 @@
 ?>
 <link rel="stylesheet" type="text/css" 
       href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
 <style>
 	.small {height:150px!important;width:150px !important}
 </style>
@@ -43,16 +44,16 @@
             <form action="submit/insert-category.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
                     <label for="txttitle">Title</label>
-                    <input type="text" class="form-control" id="txttitle" name="txttitle" placeholder="" />
+                    <input type="text" class="form-control" id="txttitle" name="txttitle" placeholder="" required />
             </div>
             <div class="form-group">
                     <label for="txtdetail">Detail</label>
-                    <textarea class="form-control" id="txtdetail" name="txtdetail"  >
+                    <textarea class="form-control" id="txtdetail" name="txtdetail" required  >
                     </textarea>
             </div>
             <div class="form-group">
                     <label for="filphoto">Select Photo</label>
-                    <input type="file" class="form-control" id="filphoto" name="filphoto"  placeholder="" accepts="image/*" />
+                    <input type="file" class="form-control" id="filphoto" name="filphoto"  placeholder="" accepts="image/*" required />
             </div>
             <b>Is Live?</b>
             <div class="form-group">
@@ -120,7 +121,9 @@
                             <td><?php echo $count++; ?> </td>
                             <td><?php echo $row['title'] ?></td>
                             <td>
+                            <a data-fancybox="gallery" href="../images/category/<?php echo $row['photo']; ?>" >
                               <img src="../images/category/<?php echo $row['photo']; ?>" class="img-fluid small" />
+                              </a>
                             </td>
                             <td><?php echo $row['detail'] ?></td>
                             <td>
@@ -132,7 +135,7 @@
                                 ?>
                             </td>
                             <td>
-                                <a href="edit-category.php">
+                                <a href="edit-category.php?id=<?php echo $row['id']; ?>">
                                     <i class="fa fa-edit fa-2x"></i>
                                 </a>
                                 <a href="delete-category.php?id=<?php echo $row['id']; ?>">
@@ -153,6 +156,8 @@
 </div>
 <?php require_once('inc/script.php'); ?>
 <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
+</script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js">
 </script>
 <script>
   //datatable plugins activation code
