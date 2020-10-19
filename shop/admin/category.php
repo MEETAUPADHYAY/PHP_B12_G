@@ -5,9 +5,7 @@
 <link rel="stylesheet" type="text/css" 
       href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-<style>
-	.small {height:150px!important;width:150px !important}
-</style>
+
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">

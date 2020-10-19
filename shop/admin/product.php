@@ -55,43 +55,39 @@
 				        <th width='15%'>Operations</th>
 				    </thead>
 				    <tbody>
+				    <?php 
+				        $count = 1;
+				        $sql = "select p.id,p.title,price,p.photo,c.title 'ctitle' from product p, category c where categoryid=c.id and p.islive=1 order by id desc";
+				        $statement = $db->prepare($sql);
+				        $statement->setFetchMode(PDO::FETCH_ASSOC);
+				        $statement->execute();
+				        while($row = $statement->fetch())
+				        {
+				      
+				    ?>
 				        <tr>
-				            <td>1</td>
-				            <td>Books</td>
-				            <td>Atomic Habit</td>
-				            <td>250</td>
-				            <td></td>
+				            <td><?php echo $count++; ?></td>
+				            <td><?php echo $row['ctitle']; ?></td>
+				            <td><?php echo $row['title']; ?></td>
+				            <td><?php echo $row['price']; ?></td>
 				            <td>
-                            <a href="view-product-detail.php">
+				              <img src="../images/product/<?php echo $row['photo']; ?>" alt="" class="medium" />
+				            </td>
+				            <td>
+                            <a href="view-product-detail.php?productid=<?php echo $row['id'] ?>">
                                     <i class="fa fa-eye fa-2x mr-2"></i>
                                 </a>
-                                <a href="edit-product.php">
+                                <a href="edit-product.php?productid=<?php echo $row['id'] ?>">
                                     <i class="fa fa-edit fa-2x mr-2"></i>
                                 </a>
-                                <a href="delete-product.php">
+                                <a href="delete-product.php?productid=<?php echo $row['id'] ?>">
                                     <i class="fa fa-trash fa-2x"></i>
                                 </a>
 				            </td>
 				        </tr>
-				        <tr>
-				            <td>2</td>
-				            <td>Shoes</td>
-				            <td>Nike</td>
-				            <td>2500</td>
-				            <td></td>
-				            <td>
-                            <a href="view-product-detail.php">
-                                    <i class="fa fa-eye fa-2x mr-2"></i>
-                                </a>
-                                <a href="edit-product.php">
-                                    <i class="fa fa-edit fa-2x mr-2"></i>
-                                </a>
-                                <a href="delete-product.php">
-                                    <i class="fa fa-trash fa-2x"></i>
-                                </a>
-				            </td>
-				        </tr>
-                    </tbody>
+                <?php } //end of while ?>
+				        
+          </tbody>
 				</table>
         </div>
       </div>
