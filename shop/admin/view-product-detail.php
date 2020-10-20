@@ -1,4 +1,14 @@
-<?php  require_once('inc/header_part.php'); ?>
+<?php  
+    require_once('inc/header_part.php'); 
+    require_once('../inc/connection2.php'); 
+    extract($_REQUEST);
+    $sql = "select p.*,c.title 'ctitle' from product p, category c where p.id=? and categoryid=c.id";
+    $statement = $db->prepare($sql);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    $statement->execute(array($productid));
+    $row = $statement->fetch();
+    extract($row);
+?>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -43,39 +53,48 @@
 				    <tbody>
 				        <tr>
 				            <td>Title</td>
-				            <td></td>
+				            <td><?php echo $title ?></td>
 				        </tr>
 				        <tr>
 				            <td>Category</td>
-				            <td></td>
+				            <td><?php echo $ctitle ?></td>
 				        </tr>
 				        <tr>
 				            <td>Price</td>
-				            <td></td>
+				            <td><?php echo $price ?></td>
 				        </tr>
 				        <tr>
 				            <td>Stock</td>
-				            <td></td>
+				            <td><?php echo $stock ?></td>
 				        </tr>
 				        <tr>
 				            <td>Weight</td>
-				            <td></td>
+				            <td><?php echo $weight ?></td>
 				        </tr>
 				        <tr>
 				            <td>Size</td>
-				            <td></td>
+				            <td><?php echo $size ?></td>
 				        </tr>
 				        <tr>
 				            <td>Photo</td>
-				            <td></td>
+				            <td>
+                    <img src="../images/product/<?php echo $row['photo']; ?>" alt=""  />
+				            </td>
 				        </tr>
 				        <tr>
 				            <td>Detail</td>
-				            <td></td>
+				            <td><?php echo $detail ?></td>
 				        </tr>
 				        <tr>
 				            <td>is Live</td>
-				            <td></td>
+				            <td>
+				              <?php 
+				                if($islive==1)
+				                  echo "Yes";
+				                else 
+				                  echo "No";
+				              ?>
+				            </td>
 				        </tr>
                        
 								        
