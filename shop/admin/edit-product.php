@@ -55,7 +55,16 @@
                     <label for='sltcategoryid'>change Category</label>
                     <select class="form-control" name="sltcategoryid" id='sltcategoryid' required>
                       <option value=''>select</option>
-                      <option value='1'>Boys</option>
+                   <?php 
+                      $sql = "select id,title from category where islive=1 and isdeleted=0 order by title";
+                      $statement = $db->prepare($sql);
+                      $statement->setFetchMode(PDO::FETCH_ASSOC);
+                      $statement->execute();
+                      while($row2 = $statement->fetch())
+                      {
+                          echo "<option value='{$row2['id']}'>{$row2['title']}</option>";
+                      }
+                   ?>
                       
                     </select>
                       </div>
