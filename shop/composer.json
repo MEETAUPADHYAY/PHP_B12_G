@@ -10,7 +10,6 @@
     ],
     "require": {
         "fzaninotto/faker": "^1.9",
-        "dompdf/dompdf": "^0.8.6",
-        "twig/twig": "^3.0"
+        "dompdf/dompdf": "^0.8.6"
     }
 }

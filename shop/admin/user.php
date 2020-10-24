@@ -1,8 +1,4 @@
 <?php  
-    require_once('../vendor/autoload.php');
-    require_once dirname(__FILE__).'/lib/Twig/Autoloader.php';
-    // use Twig\Environment;
-    // use Twig\Loader\FilesystemLoader;
     require_once('inc/header_part.php'); 
     require_once('../inc/connection2.php'); 
 ?>
@@ -63,12 +59,19 @@
   		            extract($row)
   		        ?>
   		            <tr>
-  		                <td>{{$email}} </td>
-  		                <td>9662512857</td>
-  		                <td>25000</td>
-  		                <td></td>
+  		                <td><?php echo $email; ?></td>
+  		                <td><?php echo $mobile; ?></td>
+  		                <td><?php echo rand(10000,50000); ?></td>
   		                <td>
-  		                    <a href="order.php"><i class='fa fa-eye'></i></a>
+  		                  <?php 
+  		                      if($status == 1)
+  		                          echo "Yes";
+  		                      else 
+  		                          echo "No";
+  		                  ?>
+  		                </td>
+  		                <td>
+  		                    <a href="order.php?id=<?php echo $id; ?>"><i class='fa fa-eye'></i></a>
   		                </td>
   		            </tr>
                   <?php } ?>
