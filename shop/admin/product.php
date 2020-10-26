@@ -57,7 +57,7 @@
 				    <tbody>
 				    <?php 
 				        $count = 1;
-				        $sql = "select p.id,p.title,price,p.photo,c.title 'ctitle' from product p, category c where categoryid=c.id and p.islive=1 order by id desc";
+				        $sql = "select p.id,p.title,price,p.photo,c.title 'ctitle' from product p, category c where categoryid=c.id and p.isdeleted=0 order by id desc";
 				        $statement = $db->prepare($sql);
 				        $statement->setFetchMode(PDO::FETCH_ASSOC);
 				        $statement->execute();

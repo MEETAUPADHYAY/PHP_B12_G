@@ -1,4 +1,7 @@
-<?php  require_once('inc/header_part.php'); ?>
+<?php  
+    require_once('inc/header_part.php'); 
+    require_once('../inc/connection2.php'); 
+?>
 <link rel="stylesheet" type="text/css" 
       href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
 
@@ -14,7 +17,7 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1>Users Management</h1>
-          </div>
+          </div>    
           
         </div>
       </div><!-- /.container-fluid -->
@@ -40,21 +43,38 @@
   		            <tr>
   		                <th>Email</th>
   		                <th>Mobile</th>
-  		                <th>Register at</th>
   		                <th>Total shopping</th>
+  		                <th>is Live</th>
   		                <th>history</th>
   		            </tr>
   		        </thead>
   		        <tbody>
+  		        <?php 
+  		            $sql = "select id,email,mobile,status from customer order by id desc";
+  		            $statement = $db->prepare($sql);
+  		            $statement->setFetchMode(PDO::FETCH_ASSOC);
+  		            $statement->execute();
+  		            while($row = $statement->fetch())
+  		            {
+  		            extract($row)
+  		        ?>
   		            <tr>
-  		                <td>ankit3385@gmail.com</td>
-  		                <td>9662512857</td>
-  		                <td>Fri 09-10-2020</td>
-  		                <td>25000</td>
+  		                <td><?php echo $email; ?></td>
+  		                <td><?php echo $mobile; ?></td>
+  		                <td><?php echo rand(10000,50000); ?></td>
   		                <td>
-  		                    <a href="order.php"><i class='fa fa-eye'></i></a>
+  		                  <?php 
+  		                      if($status == 1)
+  		                          echo "Yes";
+  		                      else 
+  		                          echo "No";
+  		                  ?>
+  		                </td>
+  		                <td>
+  		                    <a href="order.php?id=<?php echo $id; ?>"><i class='fa fa-eye'></i></a>
   		                </td>
   		            </tr>
+                  <?php } ?>
   		        </tbody>
   		    </table>
         </div>

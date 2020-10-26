@@ -1,4 +1,7 @@
-<?php  require_once('inc/header_part.php'); ?>
+<?php  
+    require_once('inc/header_part.php'); 
+    require_once('../inc/connection2.php'); 
+?>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -45,8 +48,16 @@
                     <label for='sltcategoryid'>Select Category</label>
                     <select class="form-control" name="sltcategoryid" id='sltcategoryid' required>
                       <option value=''>select</option>
-                      <option value='1'>Boys</option>
-                      
+                      <?php 
+                          $sql = "select id,title from category where islive=1 and isdeleted=0 order by title";
+                          $statement = $db->prepare($sql);
+                          $statement->setFetchMode(PDO::FETCH_ASSOC);
+                          $statement->execute();
+                          while($row = $statement->fetch())
+                          {
+                              echo "<option value='{$row['id']}'>{$row['title']}</option>";
+                          }
+                      ?>
                     </select>
                       </div>
                 </div>

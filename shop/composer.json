@@ -1,0 +1,15 @@
+{
+    "name": "ankit/shop",
+    "description": "my first composer",
+    "type": "project",
+    "authors": [
+        {
+            "name": "theeasylearn",
+            "email": "theeasylearn@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "fzaninotto/faker": "^1.9",
+        "dompdf/dompdf": "^0.8.6"
+    }
+}
