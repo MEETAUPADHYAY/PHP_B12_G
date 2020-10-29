@@ -1,5 +1,9 @@
+<?php  
+    require_once('inc/header_part.php'); 
+    require_once('../inc/connection2.php');
+?>
+
 </head>
-<?php  require_once('inc/header_part.php'); ?>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <?php require_once('inc/links.php'); ?>
@@ -44,26 +48,28 @@
 			        </tr>
 			    </thead>
 			    <tbody>
+			    <?php 
+			        $sql = "select id,billdate,amount,paymentstatus,orderstatus,city from bill order by id desc";
+			        $statement = $db->prepare($sql);
+			        $statement->setFetchMode(PDO::FETCH_ASSOC);
+			        $statement->execute();
+			        $PaymentStatusArray = array("<span class='text-danger'>unpaid</span>","<span class='text-primary'>paid</span>");
+			        $OrderStatusArray = array("","Confirmed","Dispatched","Delivered");
+			        while($row = $statement->fetch())
+			        {
+			          extract($row);
+			    ?>
 			        <tr>
-			            <td>Fri 09-oct-2020</td>
-			            <td>25000</td>
-			            <td>Paid</td>
-			            <td>Confirmed</td>
-			            <td>Bhavnagar</td>
+			            <td><?php echo date("D d-m-Y",strtotime($billdate)); ?></td>
+			            <td><?php echo $amount ?></td>
+			            <td><?php echo $PaymentStatusArray[$paymentstatus] ?></td>
+			            <td><?php echo $OrderStatusArray[$orderstatus] ?></td>
+			            <td><?php echo $city ?></td>
 			            <td>
-			                <a href=""><i class='fa fa-eye'></i></a> &nbsp;
+			                <a href="process-order.php?billid=<?php echo $id ?>"><i class='fa fa-eye'></i></a> &nbsp;
 			            </td>
 			        </tr>
-                    <tr>
-			            <td>Thu 08-oct-2020</td>
-			            <td>12500</td>
-			            <td>COD</td>
-			            <td>Delivered</td>
-			            <td>Surat</td>
-			            <td>
-			                <a href="process-order.php"><i class='fa fa-eye'></i></a> &nbsp;
-			            </td>
-			        </tr>
+              <?php } ?>
 			    </tbody>
 			</table>
         </div>

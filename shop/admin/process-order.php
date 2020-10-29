@@ -1,4 +1,7 @@
-<?php  require_once('inc/header_part.php'); ?>
+<?php  
+	require_once('inc/header_part.php'); 
+	require_once('../inc/connection2.php'); 
+?>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -31,46 +34,84 @@
             </button>
           </div>
         </div>
+        <?php 
+            //get bill detail 
+            $sql = "select * from bill where id=?";
+            $statement = $db->prepare($sql);
+            $statement->bindparam(1,$_REQUEST['billid']);
+            $statement->execute();
+            $row = $statement->fetch();
+            extract($row);
+            // var_dump($row);
+        ?>
         <div class="card-body">
                   <form action="">
   				  <table class="table table-striped table-bordered" width='100%'>
   				    <tr>
   				        <td width='25%'>Order No</td>
-  				        <td width='25%'></td>
+  				        <td width='25%'><?php echo $id; ?></td>
   				        <td width='25%'>Order Date</td>
-  				        <td width='25%'></td>
+  				        <td width='25%'><?php echo date("D d-m-Y",strtotime($billdate)); ?></td>
   				    </tr>
   				    <tr>
   				        <td width='25%'>Customer Detail</td>
-  				        <td width='25%'></td>
+  				        <td width='25%'>
+  				          <?php   
+  				              echo "$fullname<br/> Mobile $mobile";
+  				          ?>
+  				        </td>
   				        <td width='25%'>Payment Mode</td>
   				        <td width='25%'>
   				          <div class="form-group">
                                 <select class="form-control" name="" required>
-                                    <option value=""></option>
-                                    <option value=""></option>
+                            <?php 
+                                $PaymentModes = array("unpaid","paid");
+								$size = sizeof($PaymentModes);       
+								$index=0;
+                                    while($index<$size)
+                                    {
+                                        if($index==$row['paymentmode'])
+                                                echo "<option selected value='$index'> $PaymentModes[$index]</option>";
+										else 
+                                                echo "<option value='$index'> $PaymentModes[$index]</option>";
+                                        
+                                        $index++;
+								}
+                            ?>
                                 </select>
                             </div>
   				        </td>
   				    </tr>
                       <tr>
   				        <td width='25%'>Delivery Address</td>
-  				        <td width='25%'></td>
+  				        <td width='25%'>
+						  <?php   
+  				              echo "$address1<br/> $address2";
+  				          ?>
+  				        </td>
   				        <td width='25%'>Order status</td>
   				        <td width='25%'>
                           <div class="form-group">
                                 <select class="form-control" name="" required>
-                                    <option value=""></option>
-                                    <option value=""></option>
+								<?php 
+                                    $Orderstatus = array("","Confirmed","Dispatched","Delivered");
+									$size = sizeof($Orderstatus);       
+									$index=0;
+                                    while($index<$size)
+                                    {
+                                        echo "<option value='$index'> $Orderstatus[$index]</option>";
+                                        $index++;
+									}
+                                ?>
                                 </select>
                             </div>
   				        </td>
   				    </tr>
                       <tr>
   				        <td width='25%'>City</td>
-  				        <td width='25%'></td>
+  				        <td width='25%'><?php echo "<br/> $city <br/> $pincode"; ?></td>
   				        <td width='25%'>Remarks</td>
-  				        <td width='25%'></td>
+  				        <td width='25%'><?php echo "$remarks"; ?></td>
   				    </tr>
   				  </table>
   				  <div>
