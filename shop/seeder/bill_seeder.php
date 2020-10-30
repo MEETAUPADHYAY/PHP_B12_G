@@ -6,7 +6,7 @@
     $sql = "INSERT INTO bill(customerid, amount, billdate, paymentmode, paymentstatus, fullname, address1, address2, city, pincode, mobile, remarks, orderstatus) VALUES (:customerid, :amount, :billdate, :paymentmode, :paymentstatus, :fullname, :address1, :address2, :city, :pincode, :mobile, :remarks, :orderstatus)";
     $statement = $db->prepare($sql);
     $faker = Factory::create();
-    for($i=1;$i<=1000;$i++)
+    for($i=1;$i<=1000;$i++)ord
     {
         $customerid = rand(1,50);
         $statement->bindparam(":customerid",$customerid);
