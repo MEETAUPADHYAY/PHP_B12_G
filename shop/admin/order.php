@@ -2,7 +2,8 @@
     require_once('inc/header_part.php'); 
     require_once('../inc/connection2.php');
 ?>
-
+<link rel="stylesheet" type="text/css" 
+      href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -36,7 +37,11 @@
           </div>
         </div>
         <div class="card-body">
-			<table class="table table-bordered table-striped table-hover" width='100%'>
+        <?php 
+               if(isset($_REQUEST['message'])==true) 
+                  alert($_REQUEST['message']);
+        ?>
+			<table id="myTable" class="table table-bordered table-striped table-hover" width='100%'>
 			    <thead>
 			        <tr>
 			            <th>Date</th>
@@ -49,11 +54,11 @@
 			    </thead>
 			    <tbody>
 			    <?php 
-			        $sql = "select id,billdate,amount,paymentstatus,orderstatus,city from bill order by id desc";
+			        $sql = "select id,billdate,amount,paymentstatus,orderstatus,city from bill order by id";
 			        $statement = $db->prepare($sql);
 			        $statement->setFetchMode(PDO::FETCH_ASSOC);
 			        $statement->execute();
-			        $PaymentStatusArray = array("<span class='text-danger'>unpaid</span>","<span class='text-primary'>paid</span>");
+			        $PaymentStatusArray = array("<span class='text-danger'>pending</span>","<span class='text-primary'>paid</span>");
 			        $OrderStatusArray = array("","Confirmed","Dispatched","Delivered");
 			        while($row = $statement->fetch())
 			        {
@@ -65,7 +70,7 @@
 			            <td><?php echo $PaymentStatusArray[$paymentstatus] ?></td>
 			            <td><?php echo $OrderStatusArray[$orderstatus] ?></td>
 			            <td><?php echo $city ?></td>
-			            <td>
+			            <td >
 			                <a href="process-order.php?billid=<?php echo $id ?>"><i class='fa fa-eye'></i></a> &nbsp;
 			            </td>
 			        </tr>
@@ -78,5 +83,13 @@
   </div>
 </div>
 <?php require_once('inc/script.php'); ?>
+<script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
+</script>
+<script>
+  //datatable plugins activation code
+  $(document).ready( function () {
+    $('#myTable').DataTable();
+  });
+</script>
 </body>
 </html>

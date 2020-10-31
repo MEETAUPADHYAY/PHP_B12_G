@@ -18,7 +18,7 @@
     <!-- Brand Logo -->
     <a href="theme/index3.html" class="brand-link">
       <span class="brand-text font-weight-light">Admin panel for website</span>
-    </a
+    </a>
     <!-- Sidebar -->
     <div class="sidebar"> 
       <!-- Sidebar Menu -->

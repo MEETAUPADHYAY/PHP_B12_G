@@ -1,4 +1,7 @@
-<?php  require_once('inc/header_part.php'); ?>
+<?php  
+  require_once('inc/header_part.php'); 
+  require_once('../inc/connection2.php'); 
+?>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -23,7 +26,17 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                       <div class="inner">
-                        <h3>150</h3>
+                        <h3>
+                        <?php 
+                          $sql = "select count(*) 'today_order' from bill where billdate=?";
+                          $statement = $db->prepare($sql);
+                          $TodayDate = date("Y-m-d");
+                          $statement->bindparam(1,$TodayDate);
+                          $statement->execute();
+                          $row=$statement->fetch();
+                          echo $row['today_order'];
+                        ?>
+                        </h3>
         
                         <p>Today's New Orders</p>
                       </div>
@@ -97,8 +110,7 @@
                         <div class="small-box bg-warning">
                           <div class="inner">
                             <h3>150</h3>
-            
-                            <p>Last 7 day's Orders</p>
+                            <p>Last 1 year Orders</p>
                           </div>
                           <div class="icon">
                             <i class="ion ion-bag"></i>
