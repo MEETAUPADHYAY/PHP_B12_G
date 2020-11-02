@@ -42,10 +42,10 @@
             $statement->execute();
             $row = $statement->fetch();
             extract($row);
-            // var_dump($row);
         ?>
         <div class="card-body">
-                  <form action="">
+                  <form action="submit/process-order.php" method="post">
+                  <input type="hidden" name="billid" value="<?php echo $_REQUEST['billid']; ?>">
   				  <table class="table table-striped table-bordered" width='100%'>
   				    <tr>
   				        <td width='25%'>Order No</td>
@@ -63,17 +63,17 @@
   				        <td width='25%'>Payment Mode</td>
   				        <td width='25%'>
   				          <div class="form-group">
-                                <select class="form-control" name="" required>
+                                <select class="form-control" name="sltpaymentstatus" required>
                             <?php 
-                                $PaymentModes = array("unpaid","paid");
-								$size = sizeof($PaymentModes);       
+                                $PaymentStatus = array("unpaid","paid");
+								$size = sizeof($PaymentStatus);       
 								$index=0;
                                     while($index<$size)
                                     {
-                                        if($index==$row['paymentmode'])
-                                                echo "<option selected value='$index'> $PaymentModes[$index]</option>";
+                                        if($index==$row['paymentstatus'])
+                                                echo "<option selected='selected' value='$index'> $PaymentStatus[$index]</option>";
 										else 
-                                                echo "<option value='$index'> $PaymentModes[$index]</option>";
+                                                echo "<option value='$index'> $PaymentStatus[$index]</option>";
                                         
                                         $index++;
 								}
@@ -92,14 +92,17 @@
   				        <td width='25%'>Order status</td>
   				        <td width='25%'>
                           <div class="form-group">
-                                <select class="form-control" name="" required>
+                                <select class="form-control" name="sltorderstatus" required>
 								<?php 
                                     $Orderstatus = array("","Confirmed","Dispatched","Delivered");
 									$size = sizeof($Orderstatus);       
 									$index=0;
                                     while($index<$size)
                                     {
-                                        echo "<option value='$index'> $Orderstatus[$index]</option>";
+                                        if($index==$row['orderstatus'])
+                                            echo "<option value='$index' selected='selected'> $Orderstatus[$index]</option>";
+                                        else 
+                                            echo "<option value='$index'> $Orderstatus[$index]</option>";
                                         $index++;
 									}
                                 ?>
@@ -117,7 +120,7 @@
   				  <div>
   				      <p class=text-right>
   				          <button types="submit" class="btn btn-danger">Process Order</button>
-  				          <a href="print-order.php" class="btn btn-info">Print</a>
+  				          <a href="print-order.php?billid=<?php echo $_REQUEST['billid']; ?>" class="btn btn-info">Print</a>
   				      </p>
   				  </div>
   				  <table class="table table-striped table-bordered mt-5" width='100%'>
@@ -130,21 +133,30 @@
   				          </tr>
   				      </thead>
   				      <tbody>
+  				      <?php 
+  				          $sql = "select title,c.price,c.quantity from product p,cart c where c.productid=p.id and billid=?";
+						$statement = $db->prepare($sql);
+						$statement->bindparam(1,$_REQUEST['billid']);
+						$statement->execute();
+						$GrandTotal=0;
+						while($cartrow=$statement->fetch())
+						{
+  				      ?>
   				          <tr>
-  				              <td>T-shirt</td>
-  				              <td>500</td>
-  				              <td>2</td>
-  				              <td>1000.0</td>
+  				              <td><?php echo $cartrow['title'] ?></td>
+  				              <td align=right><?php echo $cartrow['price'] ?></td>
+  				              <td align=right> <?php echo $cartrow['quantity'] ?></td>
+  				              <td align=right><?php echo $cartrow['price'] * $cartrow['quantity'] ?></td>
   				          </tr>
-  				          <tr>
-  				              <td>jeans</td>
-  				              <td>1000</td>
-  				              <td>2</td>
-  				              <td>2000.0</td>
-  				          </tr>
+  				     <?php 
+  				          $GrandTotal+= ($cartrow['price']*$cartrow['quantity']);
+						} //end of while 
+  				        ?>  
   				          <tr>
   				              <td colspan=2>Grand total</td>
-  				              <td colspan=2 class=text-right>3000.0</td>
+  				              <td colspan=2 align="right">
+								<?php echo number_format($GrandTotal) ?>
+  				              </td>
   				             
   				          </tr>
   				      </tbody>
