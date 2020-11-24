@@ -1,7 +1,7 @@
 <?php  
+    require_once('inc/verify_login.php'); 
     require_once('inc/header_part.php'); 
-    require_once('../inc/connection2.php');
-  
+    require_once('../inc/connection2.php');  
 ?>
 <link rel="stylesheet" type="text/css" 
       href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />

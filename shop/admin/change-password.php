@@ -1,4 +1,7 @@
-<?php  require_once('inc/header_part.php'); ?>
+<?php  
+    require_once('inc/verify_login.php'); 
+    require_once('inc/header_part.php'); 
+?>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -34,7 +37,7 @@
           </div>
         </div>
         <div class="card-body">
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="submit/update-password.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
                     <label for="txtcurrentpassword">Current Password</label>
                     <input type="password" class="form-control" id="txtcurrentpassword" name="txtcurrentpassword" placeholder="" />
@@ -49,7 +52,7 @@
             </div>
             
             <div class="form-group">
-                  <button type="submit" class="btn btn-primary">Save changes</button>
+                  <button type="submit" class="btn btn-primary" name="submit">Save changes</button>
                   <button type="reset" class="btn btn-default">Reset</button>
             </div>
             </form>
