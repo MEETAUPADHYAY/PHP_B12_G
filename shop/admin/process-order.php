@@ -121,6 +121,7 @@
   				      <p class=text-right>
   				          <button types="submit" class="btn btn-danger">Process Order</button>
   				          <a href="print-order.php?billid=<?php echo $_REQUEST['billid']; ?>" class="btn btn-info">Print</a>
+						<a href="download-order.php?billid=<?php echo $_REQUEST['billid']; ?>" class="btn btn-primary">download pdf</a>
   				      </p>
   				  </div>
   				  <table class="table table-striped table-bordered mt-5" width='100%'>
