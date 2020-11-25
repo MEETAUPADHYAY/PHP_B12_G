@@ -67,8 +67,13 @@
               <p class="text">Change password</p>
             </a>
           </li>
+         <li class="nav-item">
+            <a href="logout.php" class="nav-link">
+              <i class="nav-icon far fa-user text-danger"></i>
+              <p class="text">Log out</p>
+            </a>
+          </li>
           
-         
         </ul>
       </nav>
     </div>

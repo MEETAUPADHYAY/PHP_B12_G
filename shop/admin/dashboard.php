@@ -1,4 +1,5 @@
-<?php  
+<?php
+  require_once('inc/verify_login.php'); 
   require_once('inc/header_part.php'); 
   require_once('../inc/connection2.php'); 
 ?>
