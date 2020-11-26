@@ -55,6 +55,10 @@
                   <button type="submit" class="btn btn-primary" name="submit">Save changes</button>
                   <button type="reset" class="btn btn-default">Reset</button>
             </div>
+            <?php 
+               if(isset($_REQUEST['message'])==true) 
+                  alert($_REQUEST['message']);
+            ?>  
             </form>
         </div>
       </div>
