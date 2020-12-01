@@ -1,4 +1,6 @@
-<?php require_once("inc/header-part.php") ?>
+<?php
+	session_start();
+	require_once("inc/header-part.php") ?>
 </head>
 <body>
 <?php require_once("inc/menu.php") ?>
@@ -36,24 +38,34 @@
 	                    <h5>Register</h5>
 	                </div>
 	                <div class="card-body">
-                    <form action="" method="post">
+                    <form action="submit/register.php" method="post" novalidate>
 	                        <div class="form-group">
-                                <input type="mail" placeholder="Email" class="form-control" required />
+                                <input type="email" name="email" placeholder="Email" class="form-control" required />
 	                        </div>
 	                        <div class="form-group">
-                                <input type="password" placeholder="Password" class="form-control" required />
+                                <input type="password" name="password" placeholder="Password" class="form-control" required />
 	                        </div>
 	                        <div class="form-group">
-                                <input type="password" placeholder="Confirm Password" class="form-control" required />
+                                <input type="password" name="confirm_password" placeholder="Confirm Password" class="form-control" required />
 	                        </div>
                             
 	                        <div class="form-group">
-                                <input type="number" placeholder="Mobile" class="form-control" required />
+                                <input type="number" name="mobile" placeholder="Mobile" class="form-control" required />
 	                        </div>
 	                        <div class="form-group">
-	                            <input type="button" value="Register" class="btn btn-danger btn-block">
+	                            <input type="submit" value="Register" class="btn btn-danger btn-block">
 	                        </div>
-                        </form>	                       
+                        </form>	  
+                        <?php 
+                            if(isset($_SESSION['register_errors'])==true)
+                            {
+							$errors = unserialize($_SESSION['register_errors']);
+							foreach($errors as $key=>$value)
+							{
+								echo "<br/> $value";
+							}
+						}
+                        ?>
 	                </div>
 	            </div>
 	        </div>
