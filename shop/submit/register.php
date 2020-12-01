@@ -15,6 +15,8 @@
         $errors = $validation->errors();
         $register_errors = $errors->firstOfAll();
         $_SESSION['register_errors'] = serialize($register_errors); 
+        $validinput = $validation->getValidatedData();
+        $_SESSION['register_inputs'] = serialize($validinput); 
         header("location:../login_register.php");
     } 
     else 

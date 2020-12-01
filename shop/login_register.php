@@ -1,6 +1,17 @@
 <?php
 	session_start();
-	require_once("inc/header-part.php") ?>
+	require('../vendor/autoload.php');
+    use Rakit\Validation\Validator;
+	require_once("inc/header-part.php");
+	$register_errors = null;
+	$register_inputs = null;
+	if(isset($_SESSION['register_errors'])==true)
+	{
+		$register_errors = unserialize($_SESSION['register_errors']);
+		$register_inputs = unserialize($_SESSION['register_inputs']);
+	}
+	
+?>
 </head>
 <body>
 <?php require_once("inc/menu.php") ?>
@@ -40,27 +51,43 @@
 	                <div class="card-body">
                     <form action="submit/register.php" method="post" novalidate>
 	                        <div class="form-group">
-                                <input type="email" name="email" placeholder="Email" class="form-control" required />
+                                <input type="email" name="email" placeholder="Email" class="form-control" required  value="<?php echo $register_inputs['email']; ?>" />
+							
+							<?php 
+	                            if($register_errors!=null && isset($register_errors['email']))
+	                                echo "<div class='p-1 bg-danger text-white'>" . $register_errors['email'] . "</div>";
+	                        ?>
 	                        </div>
 	                        <div class="form-group">
-                                <input type="password" name="password" placeholder="Password" class="form-control" required />
+                                <input type="password" name="password" placeholder="Password" class="form-control" value="<?php echo $register_inputs['password']; ?>" required />
+							<?php 
+	                            if($register_errors!=null  && isset($register_errors['password']))
+	                                echo "<div class='p-1 bg-danger text-white'>" . $register_errors['password'] . "</div>";
+	                        ?>
 	                        </div>
 	                        <div class="form-group">
-                                <input type="password" name="confirm_password" placeholder="Confirm Password" class="form-control" required />
+                                <input type="password" name="confirm_password" placeholder="Confirm Password" class="form-control" value="<?php echo $register_inputs['confirm_password']; ?>"  required />
+							<?php 
+	                            if($register_errors!=null  && isset($register_errors['confirm_password']))
+	                                echo "<div class='p-1 bg-danger text-white'>" . $register_errors['confirm_password'] . "</div>";
+	                        ?>
 	                        </div>
                             
 	                        <div class="form-group">
-                                <input type="number" name="mobile" placeholder="Mobile" class="form-control" required />
+                                <input type="number" name="mobile" placeholder="Mobile" class="form-control" value="<?php echo $register_inputs['mobile']; ?>" required />
+                                <?php 
+	                            if($register_errors!=null  && isset($register_errors['mobile']))
+	                                echo "<div class='p-1 bg-danger text-white'>" . $register_errors['mobile'] . "</div>";
+	                        ?>
 	                        </div>
 	                        <div class="form-group">
 	                            <input type="submit" value="Register" class="btn btn-danger btn-block">
 	                        </div>
                         </form>	  
                         <?php 
-                            if(isset($_SESSION['register_errors'])==true)
-                            {
-							$errors = unserialize($_SESSION['register_errors']);
-							foreach($errors as $key=>$value)
+                        if($register_errors!=null)
+                        {
+							foreach($register_errors as $key=>$value)
 							{
 								echo "<br/> $value";
 							}
