@@ -5,22 +5,20 @@
     $validator = new Validator;
     $validation = $validator->validate($_POST, [
         'email'=> 'required|email',
-        'password'=> 'required|min:10|max:32',
-        'confirm_password'=> 'required|min:10|max:32|same:password',
-        'mobile'=> 'required|numeric'
+        'password'=> 'required|min:10'
     ]);
     
-    if ($validation->fails()) {
+    if ($validation->fails()==true) {
         // handling errors
         $errors = $validation->errors();
-        $register_errors = $errors->firstOfAll();
-        $_SESSION['register_errors'] = serialize($register_errors); 
+        $login_errors = $errors->firstOfAll();
+        $_SESSION['login_errors'] = serialize($login_errors); 
         $validinput = $validation->getValidatedData();
-        $_SESSION['register_inputs'] = serialize($validinput); 
+        $_SESSION['login_inputs'] = serialize($validinput); 
         header("location:../login_register.php");
     } 
     else 
     {
-         
+        
     }
 ?>
