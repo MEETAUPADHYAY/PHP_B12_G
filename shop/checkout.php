@@ -25,36 +25,72 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-7 order-2 order-lg-1">
-					<form class="checkout-form" method="post" action="submit/checkout.php" novalidate>
+					<form  method="post" action="submit/checkout.php" novalidate>
 						<div class="cf-title">Billing Address</div>
-						<div class="row">
-							<div class="col-12">
-								<input type="text" name="fullname" placeholder="Full name" required />
+						<div class="row mb-2">
+							<div class="col-12 ">
+								<input type="text" class="form-control" name="fullname" placeholder="Full name" required value="<?php echo $inputs['fullname'] ?>" />
+							<?php 
+								if(isset($errors['fullname'])==true)
+									echo "<div class='p-1 bg-danger text-white mb-2'>{$errors['fullname']}</div>";
+							?>
 							</div>
 						</div>
-						<div class="row">
+						<div class="row  mb-2">
 							<div class="col-12">
-								<input type="text" placeholder="Phone no." required name="phone" />
+								<input type="text" class="form-control" placeholder="Phone no." required name="phone" value="<?php echo $inputs['phone'] ?>" />
+							<?php 
+								if(isset($errors['phone'])==true)
+									echo "<div class='p-1 bg-danger text-white mb-2'>{$errors['phone']}</div>";
+							?>
 							</div>
 						</div>
 						
-						<div class="row address-inputs">
+						<div class="row  mb-2">
 							<div class="col-md-12">
-								<input type="text" placeholder="Address" required name="address_1" />
-								<input type="text" placeholder="Address line 2" required name="address_2" />
+								<input type="text" class="form-control" placeholder="Address" required name="address_1" value="<?php echo $inputs['address_1'] ?>" />
+							<?php 
+								if(isset($errors['address_1'])==true)
+									echo "<div class='p-1 bg-danger text-white mb-2'>{$errors['address_1']}</div>";
+							?>
 							</div>
-							<div class="col-md-6">
-								<input type="text" placeholder="Zip code" required name="zipcode" />
-							</div>
-							<div class="col-md-6">
-								<input type="text" name="city" placeholder="city" required />
-								
-							</div>
+						</div>
+						<div class="row  mb-2">
 							<div class="col-md-12">
-							remarks
-							<textarea class="form-control" required name="remarks" >
+								<input type="text" class="form-control" placeholder="Address line 2" required name="address_2" value="<?php echo $inputs['address_2'] ?>" />
+								<?php 
+								if(isset($errors['address_2'])==true)
+								echo "<div class='p-1 bg-danger text-white mb-2'>{$errors['address_2']}</div>";
+								?>
+							</div>
+						</div>
+						<div class="row  mb-2">
+							<div class="col-md-12">
+								<input type="text" class="form-control" placeholder="Zip code" required name="zipcode" value="<?php echo $inputs['zipcode'] ?>" />
+							<?php 
+								if(isset($errors['zipcode'])==true)
+									echo "<div class='p-1 bg-danger text-white mb-2'>{$errors['zipcode']}</div>";
+							?>
+							</div>
 							
-							</textarea>
+						</div>
+						<div class="row  mb-2">
+							<div class="col-md-12">
+								<input type="text" class="form-control" name="city" placeholder="city" required value="<?php echo $inputs['city'] ?>" />
+							<?php 
+								if(isset($errors['city'])==true)
+									echo "<div class='p-1 bg-danger text-white mb-2'>{$errors['city']}</div>";
+							?>
+							</div>	
+						</div>
+						<div class="row  mb-2">
+							<div class="col-md-12">
+									remarks
+							</div>
+							<div class="col-md-12">
+								<textarea class="form-control" required name="remarks" >
+								
+								</textarea>
 							</div>
 						</div>
 						<button type="submit" class="site-btn submit-order-btn">Place Order</button>
