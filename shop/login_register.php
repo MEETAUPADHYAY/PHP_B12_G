@@ -5,10 +5,24 @@
 	require_once("inc/header-part.php");
 	$register_errors = null;
 	$register_inputs = null;
+	
+	$login_errors = null;
+	$login_inputs = null;
+	
 	if(isset($_SESSION['register_errors'])==true)
 	{
 		$register_errors = unserialize($_SESSION['register_errors']);
 		$register_inputs = unserialize($_SESSION['register_inputs']);
+		unset($_SESSION['register_errors']); // it used to remove variable from memory 
+		unset($_SESSION['register_inputs']); // it used to remove variable from memory 
+	}
+	
+	if(isset($_SESSION['login_errors'])==true)
+	{
+		$login_errors = unserialize($_SESSION['login_errors']);
+		$login_inputs = unserialize($_SESSION['login_inputs']);
+		unset($_SESSION['login_errors']); // it used to remove variable from memory 
+		unset($_SESSION['login_inputs']); // it used to remove variable from memory 
 	}
 	
 ?>
@@ -28,15 +42,23 @@
 	                    <h5>Login</h5>
 	                </div>
 	                <div class="card-body">
-	                    <form action="" method="post">
+	                    <form action="submit/verify-user.php" method="post" >
 	                        <div class="form-group">
-                                <input type="mail" placeholder="Email" class="form-control" required />
+                                <input type="mail" name="email" placeholder="Email" class="form-control" required value="<?php echo $login_inputs['email']; ?>" />
+								<?php 
+	                            if($login_errors!=null && isset($login_errors['email']))
+	                                echo "<div class='p-1 bg-danger text-white'>" . $login_errors['email'] . "</div>";
+	                            ?>
 	                        </div>
 	                        <div class="form-group">
-                                <input type="password" placeholder="Password" class="form-control" required />
+                                <input type="password" name="password" placeholder="Password" class="form-control" required />
+                                <?php 
+	                            if($login_errors!=null && isset($login_errors['password']))
+	                                echo "<div class='p-1 bg-danger text-white'>" . $login_errors['password'] . "</div>";
+	                            ?>
 	                        </div>
 	                        <div class="form-group">
-	                            <input type="button" value="Login" class="btn btn-danger btn-block">
+	                            <input type="submit" value="Login" class="btn btn-danger btn-block">
 	                        </div>
                         </form>
 	                </div>
@@ -49,7 +71,7 @@
 	                    <h5>Register</h5>
 	                </div>
 	                <div class="card-body">
-                    <form action="submit/register.php" method="post" novalidate>
+                    <form action="submit/register.php" method="post" >
 	                        <div class="form-group">
                                 <input type="email" name="email" placeholder="Email" class="form-control" required  value="<?php echo $register_inputs['email']; ?>" />
 							
