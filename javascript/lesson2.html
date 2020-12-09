@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <h1>Example of confirm dialogbox</h1>
+        <a href="#" onclick="MyFirstFunction()">show confirmation dialogbox</a>
+        <a href="lesson1.html" onclick="return confirm('are you sure you want to do this?'); ">Open Lesson</a>
+        <hr/>
+<script>
+    function MyFirstFunction()
+    {
+        var response = confirm("are you sure you want to delete this record?")    
+        if(response==true)
+            alert("you have decided to delete record");
+        else 
+            alert("you have decided to not to delete record");
+    }
+</script>
+</body>
+</html>

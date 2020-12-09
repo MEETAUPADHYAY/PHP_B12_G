@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    document.write("<h1>Example of prompt dialogbox</h1>");
+</script>
+        <h1 id='heading'></h1>
+        <input type="text" id="txtname" />
+<script>
+    var name = prompt("what is your name?","Mr India");
+    console.log(name);
+    console.error(name);
+    console.info(name);
+    console.warn(name);
+    console.debug(name);
+    document.getElementById('heading').innerHTML = "Good morning/afternoon/evening " + name;
+    document.getElementById('txtname').value = name;
+</script>
+</body>
+</html>
