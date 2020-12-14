@@ -4,19 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
+    <style>
+        .noerror
+        {
+            visibility:hidden;
+        }
+        .error
+        {
+            visibility:visible;
+            background-color: bisque;
+            color:red;
+            border: 1px solid red;
+        }
+    </style>
 </head>
 <body>
     <form>
         <table align=center border="2" cellpadding=5 width=80%>
             <tr>
-                <td>
+                <td width=30%>
                     Enter First Number
                 </td>
-                <td>
+                <td width=35%>
                     <input type="text" id="txtnum1" >
                 </td>
-                <td>
-                
+                <td width=35% id='tdtxtnum1' class='noerror'>
+                    number is required input & must contains only digit
                 </td>
             </tr>
             <tr>
@@ -26,7 +39,9 @@
                 <td>
                     <input type="text"  id="txtnum2" >
                 </td>
-                <td></td>
+                <td id='tdtxtnum2' class='noerror'>
+                    number is required input & must contains only digit
+                </td>
             </tr>
             <tr>
                 <td colspan="3" align="center" id='output'>

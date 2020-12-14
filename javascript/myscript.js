@@ -1,10 +1,5 @@
 // external javascript file
 var num1,num2;
-function getInput()
-{
-    num1 = parseInt(getValue("txtnum1"));
-    num2 = parseInt(getValue("txtnum2"));
-}
 function $(id)
 {
     return document.getElementById(id);
@@ -15,62 +10,68 @@ function getValue(id)
 }
 function isDigit(value)
 {
-    const regex = new RegExp(/[^0-9]/,'g');
-    value = String(value);
-    if (value!='' && value.match(regex)) 
-        return false;
-    else 
+    if (value!="" && isFinite(value)==true) 
         return true;
+    else 
+        return false;
+}
+
+
+function ValidateInput(e)
+{
+    var td = "td" + e.target.id;
+    if(isDigit(getValue(e.target.id))==false)
+        $(td).className ="error";
+    else
+        $(td).className ="noerror";
+}
+function getInput()
+{
+
+    num1 = parseInt(getValue("txtnum1"));
+    num2 = parseInt(getValue("txtnum2"));
 }
 function add()
 {
     getInput();
-    if(isDigit(num1)==true && isDigit(num2)==true)
+    if(isNaN(num1)==false && isNaN(num2)==false)
     {
         var result = num1 + num2;
         $("output").innerHTML = "result of addition is " + result;
     }
-    else
-    {
-        alert("input(s) invalid");
-    }
+    
 }
 function sub()
 {
     getInput();
-    if(isDigit(num1)==true && isDigit(num2)==true)
+    if(isNaN(num1)==false && isNaN(num2)==false)
     {
         var result = num1 - num2;
         $("output").innerHTML = "result of substraction is " + result;
-    }
-    else
-    {
-        alert("input(s) invalid");
     }
 }
 function mul()
 {  
     getInput();
-    if(isDigit(num1)==true && isDigit(num2)==true)
+    if(isNaN(num1)==false && isNaN(num2)==false)
     {
         var result = num1 * num2;
         $("output").innerHTML = "result of multiplication is " + result;
-    }
-    else
-    {
-        alert("input(s) invalid");
     }
 }
 function div()
 {
     getInput();
-    if(isDigit(num1)==true && isDigit(num2)==true)
+    if(isNaN(num1)==false && isNaN(num2)==false)
     {
         var result = num1 / num2;
         $("output").innerHTML = "result of multiplication is " + result;
     }
-    else
-    {
-        alert("input(s) invalid");
-    }
 }
+$("txtnum1").addEventListener("blur", (e)=>{
+    ValidateInput(e);
+ });
+ 
+$("txtnum2").addEventListener("blur", (e)=>{
+     ValidateInput(e);
+ });
