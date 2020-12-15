@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery Lesson @ The easylearn academy</title>
+</head>
+<body>
+    <table border="2" align="center" width='80%' cellpadding=10>
+        <tr>
+            <td width=40%>Enter Email</td>
+            <td>
+                <input type="email" />
+            </td>
+        </tr>
+        <tr>
+            <td>Enter password</td>
+            <td>
+                <input type="password" />
+            </td>
+        </tr>
+        <tr>
+            <td>Enter Mobile</td>
+            <td>
+                <input type="number" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input id="btnregister" type="button" value="register with us" />
+                <input id="btnlogin" type="button" value="login with us" />
+            </td>
+        </tr>
+    </table>
+    <script src="jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("input[type!='button']").focus(function(){
+                $(this).css("background-color","#ffff00");
+                $(this).css("border","2px solid black");
+            });
+            
+            $("input[type!='button']").blur(function(){
+                $(this).css("background-color","#ffffff");
+                $(this).css("border","1px solid #eeeeee");
+            });
+            
+            $("#btnregister").click(function(){
+                console.log("Register Button Clicked");
+            });
+            
+            $("#btnlogin").click(function(){
+                console.log("login Button Clicked");
+            });
+        });
+    </script>
+</body>
+</html>
