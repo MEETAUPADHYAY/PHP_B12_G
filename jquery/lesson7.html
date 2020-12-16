@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery Lesson @ The easylearn academy</title>
+    <style>
+        div 
+        {
+            height:250px;
+            width:250px;
+            border:2px solid red;
+            background-color: yellow;
+            box-shadow: black 2px 2px 2px;
+            float:left;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <button id="slideup" >Slide up</button>
+        <button id="slidedown">Slide Down</button>
+        <button id="slidetoggle">Slide Toggle</button>
+    </p>
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+    <script src="jquery.js"></script>
+    <script>
+        var duration = 3000;
+        $(document).ready(function(){
+           $("#slideup").click(function(){
+                $("#div1").slideUp();
+                $("#div2").slideUp("slow");
+                $("#div3").slideUp(duration,function(){
+                    alert("div3 has been slideup successfully");        
+                });
+           });
+           
+           $("#slidedown").click(function(){
+                $("#div1").slideDown();
+                $("#div2").slideDown("slow");
+                $("#div3").slideDown(duration,function(){
+                    alert("div3 has been slideDown successfully");        
+                });
+            });
+            
+            $("#slidetoggle").click(function(){
+                $("#div1").slideToggle();
+                $("#div2").slideToggle("slow");
+                $("#div3").slideToggle(duration,function(){
+                    alert("div3 has been slidetoggle successfully");        
+                });
+            });
+            
+        });
+    </script>
+</body>
+</html>
