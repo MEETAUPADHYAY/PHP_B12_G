@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery Lesson @ The easylearn academy</title>
+    <style>
+        img 
+       {
+        right: 50%;
+        bottom: 50%;
+        transform: translate(50%,50%);
+        position: absolute;
+       }
+    </style>
+</head>
+<body>
+    <img src="https://via.placeholder.com/200"  />
+    <script src="jquery.js"></script>
+    <script>
+        var duration = 3000;
+        $(document).ready(function()
+        {
+            var duration = 700;
+            $("img").hover(function(){
+                //alert("hi");
+                $("img").animate({
+                    height:"55%",
+                    width:"55%",
+                },duration);
+            });
+        });
+    </script>
+</body>
+</html>
