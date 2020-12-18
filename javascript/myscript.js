@@ -1,10 +1,5 @@
 // external javascript file
 var num1,num2;
-function getInput()
-{
-    num1 = parseInt(getValue("txtnum1"));
-    num2 = parseInt(getValue("txtnum2"));
-}
 function $(id)
 {
     return document.getElementById(id);
@@ -13,27 +8,70 @@ function getValue(id)
 {
     return $(id).value;
 }
+function isDigit(value)
+{
+    if (value!="" && isFinite(value)==true) 
+        return true;
+    else 
+        return false;
+}
+
+
+function ValidateInput(e)
+{
+    var td = "td" + e.target.id;
+    if(isDigit(getValue(e.target.id))==false)
+        $(td).className ="error";
+    else
+        $(td).className ="noerror";
+}
+function getInput()
+{
+
+    num1 = parseInt(getValue("txtnum1"));
+    num2 = parseInt(getValue("txtnum2"));
+}
 function add()
 {
     getInput();
-    var result = num1 + num2;
-    $("output").innerHTML = "result of addition is " + result;
+    if(isNaN(num1)==false && isNaN(num2)==false)
+    {
+        var result = num1 + num2;
+        $("output").innerHTML = "result of addition is " + result;
+    }
+    
 }
 function sub()
 {
     getInput();
-    var result = num1 - num2;
-    $("output").innerHTML = "result of substraction is " + result;
+    if(isNaN(num1)==false && isNaN(num2)==false)
+    {
+        var result = num1 - num2;
+        $("output").innerHTML = "result of substraction is " + result;
+    }
 }
 function mul()
 {  
     getInput();
-    var result = num1 * num2;
-    $("output").innerHTML = "result of multiplication is " + result;
+    if(isNaN(num1)==false && isNaN(num2)==false)
+    {
+        var result = num1 * num2;
+        $("output").innerHTML = "result of multiplication is " + result;
+    }
 }
 function div()
 {
     getInput();
-    var result = num1 / num2;
-    $("output").innerHTML = "result of division is " + result;
+    if(isNaN(num1)==false && isNaN(num2)==false)
+    {
+        var result = num1 / num2;
+        $("output").innerHTML = "result of multiplication is " + result;
+    }
 }
+$("txtnum1").addEventListener("blur", (e)=>{
+    ValidateInput(e);
+ });
+ 
+$("txtnum2").addEventListener("blur", (e)=>{
+     ValidateInput(e);
+ });
