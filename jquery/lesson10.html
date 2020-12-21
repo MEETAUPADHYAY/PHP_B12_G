@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery Lesson @ The easylearn academy</title>
+    <style>
+        textarea
+        {
+            width:100%;
+        }
+        td
+        {
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <table width='100%' border="2" cellpadding=10>
+        <tr>
+            <td width="60%"><textarea id="txtmessage"  rows="10"></textarea></td>
+            <td width="20%"><button type="button" id="btntext">Change Text</button></td>
+            <td><button type="button" id="btnhtml">Change HTML</button></td>
+            <td><button type="button" id="btnclear">Clear</button></td>
+        </tr>
+        <tr>
+            <td colspan="4" id="output">
+                
+            </td>
+        </tr>
+    </table>
+    <script src="jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("button").click(function()
+            {
+                var ButtonId = $(this).attr("id");
+                var message = $("#txtmessage").val();
+                switch(ButtonId)
+                {
+                    case "btntext":
+                    $("#output").text(message);
+                    console.log(" text button clicked ");
+                    break;
+                    
+                    case "btnhtml":
+                    $("#output").html(message);
+                    console.log(" html button clicked ");
+                    break;
+                    
+                    case 'btnclear':
+                    $("#output").html("");
+                    $("#txtmessage").val("");
+                    break;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
