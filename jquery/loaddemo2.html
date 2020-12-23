@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery Lesson @ The easylearn academy</title>
+    <style>
+        #output
+        {
+            font-size: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="output">
+        output will come here 
+    </div>
+    <script src="jquery.js"></script>
+    <script>
+        var interval = 1000;
+        $(document).ready(function(){
+           setInterval(function(){
+            GetDateTime();
+           },interval);
+        });
+        function GetDateTime()
+        {
+            var PageURL = "ajax/getdatetime.php";
+            $("#output").load(PageURL)
+        }
+    </script>
+</body>
+</html>
