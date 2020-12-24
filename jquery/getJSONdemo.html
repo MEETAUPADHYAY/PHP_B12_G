@@ -23,7 +23,7 @@
             <td>Minute</td>
             <td>Second</td>
         </tr>
-        <tr>
+        <tr id="output">
             <td></td>
             <td></td>
             <td></td>
@@ -39,12 +39,16 @@
             //alert("Page is loaded");
             $("#btngetdatetime").click(function(){
                 //console.log("button clicked");
-                var PageURL = "ajax/getdatetime.php";
-                $.get(PageURL,function(data,status)
+                var PageURL = "ajax/getdatetimejson.php";
+                $.getJSON(PageURL,function(data,status)
                 {
-                    console.log(data + " " + status);
-                    if(status=="success")
-                        $("#output").html(data);
+                    console.log(JSON.stringify(data) + " " + status);
+                    $("#output").find("td:eq(0)").html(data[0].day);
+                    $("#output").find("td:eq(1)").html(data[0].month);
+                    $("#output").find("td:eq(2)").html(data[0].year);
+                    $("#output").find("td:eq(3)").html(data[0].hour);
+                    $("#output").find("td:eq(4)").html(data[0].minute);
+                    $("#output").find("td:eq(5)").html(data[0].second);
                 });
             }); 
         });
