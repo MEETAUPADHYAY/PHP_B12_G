@@ -12,13 +12,13 @@
     <div class="container-fluid">
         <div class="row p-3 bg-light">
             <div class="col-12">
-                <form class="form-inline">
-                    <input class="form-control mr-3" type="email" id="txtemail" placeholder="Email" />
-                    <input class="form-control mr-3" type="number" id="txtmobile" placeholder="Mobile" />
+                <form class="form-inline" id="studentform" method="post">
+                    <input class="form-control mr-3" type="email" name="txtemail" id="txtemail" placeholder="Email" />
+                    <input class="form-control mr-3" type="number" name="txtmobile" id="txtmobile" placeholder="Mobile" />
                     <b class="mr-3">Select gender</b>
                     <input type="radio" class="mr-3" name="rdogender" id="male" value="1" /><span class="mr-3">Male</span>
                     <input type="radio" class="mr-3" name="rdogender" id="female" value="0" /><span class="mr-3">Female</span>
-                    <input type="button" id="btnadd" value="Add Student" class="btn btn-lg btn-primary">
+                    <input type="button" name="btnadd" id="btnadd" value="Add Student" class="btn btn-lg btn-primary">
                 </form>
             </div>
         </div>
@@ -80,12 +80,12 @@
             var PageUrl = "ajax/getstudentdetail.php";
             $.getJSON(PageUrl,function(data,status){
                 //console.log(JSON.stringify(data));
-                var size = data.length;
+                var size = data.length; //return size of array 
                 for(i=0;i<size;i++)
                 {
                     AddRow(data[i].email,data[i].mobile,data[i].gender);
                 }
-                GenerateSerialNo();
+                //GenerateSerialNo();
             });
         }
         $(document).ready(function(){
@@ -95,8 +95,7 @@
                 email = $("#txtemail").val();
                 mobile = $("#txtmobile").val();
                 gender = $("input[name='rdogender']:checked").val();
-                $("#txtemail").val("");
-                $("#txtmobile").val("");
+               
                 if($("#btnadd").attr("value")=="Save Changes")
                 {
                     $(tr).find("td:eq(1)").html(email);
@@ -110,8 +109,15 @@
                 }
                 else 
                 {
-                    AddRow(email,mobile,gender);
+                    var PageUrl = "ajax/insert_student.php";
+                    $.post(PageUrl,$("#studentform").serialize(),function(data,status)
+                    {   
+                        console.log(data + " " + status);
+                        AddRow(email,mobile,gender);
+                    });
                 }
+                $("#txtemail").val("");
+                $("#txtmobile").val("");
             });
             
             $("body").on("click",'.delete',function(){
