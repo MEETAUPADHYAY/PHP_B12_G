@@ -2,6 +2,7 @@
     require_once("../../shop/inc/connection2.php");
     $response = array();//blank array 
     extract($_POST);
+    //var_dump($_POST);
     $sql = "insert into student (email,mobile,gender) values (?,?,?)";
     $statement = $db->prepare($sql);
     $statement->bindparam(1,$txtemail);
