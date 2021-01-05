@@ -87,8 +87,13 @@
         }
         function GetStudentDetail() {
             var PageUrl = "ajax/getstudentdetail.php";
-            $.getJSON(PageUrl, function (data, status) {
-                //console.log(JSON.stringify(data));
+            $.ajax({
+                method: "GET",
+                url: PageUrl,
+            })
+            .done(function (data) 
+            {
+                data = JSON.parse(data);
                 var size = data.length; //return size of array 
                 for (i = 0; i < size; i++) {
                     AddRow(data[i].id, data[i].email, data[i].mobile, data[i].gender);
@@ -105,9 +110,12 @@
 
                 if ($("#btnadd").attr("value") == "Save Changes") {
                     var PageUrl = "ajax/update_student.php";
-                    $.post(PageUrl,$("#studentform").serialize(), function (data, status) 
-                    {
-                    
+                    $.ajax({
+                        method: "POST",
+                        url: PageUrl,
+                        data:$("#studentform").serialize()
+                      })
+                    .done(function( data ) {
                         console.log(data + " " + status);
                         $(tr).find("td:eq(1)").html(email);
                         $(tr).find("td:eq(2)").html(mobile);
@@ -124,7 +132,13 @@
                 else {
                     var PageUrl = "ajax/insert_student.php";
                     console.log(PageUrl);
-                    $.post(PageUrl, $("#studentform").serialize(), function (data, status) {
+                  
+                    $.ajax({
+                        method: "POST",
+                        url: PageUrl,
+                        data:$("#studentform").serialize()
+                    })
+                    .done(function( data ) {
                         console.log(data + " " + status);
                         data = JSON.parse(data);
                         AddRow(data[0].id, email, mobile, gender);
@@ -133,7 +147,7 @@
                         $("#txtmobile").val("");
                     });
                 }
-                
+
             });
 
             $("body").on("click", '.delete', function () {
