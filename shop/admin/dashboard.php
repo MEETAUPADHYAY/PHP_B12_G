@@ -1,7 +1,7 @@
 <?php
-  require_once('inc/verify_login.php'); 
-  require_once('inc/header_part.php'); 
-  require_once('../inc/connection2.php'); 
+  require_once('inc/verify_login.php');
+  require_once('inc/header_part.php');
+  require_once('../inc/connection2.php');
 ?>
 </head>
 <body class="hold-transition sidebar-mini">
@@ -16,7 +16,7 @@
           <div class="col-sm-6">
             <h1>Dashboard</h1>
           </div>
-          
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -28,7 +28,7 @@
                     <div class="small-box bg-success">
                       <div class="inner">
                         <h3>
-                        <?php 
+                        <?php
                           $sql = "select count(*) 'today_order' from bill where billdate=?";
                           $statement = $db->prepare($sql);
                           $TodayDate = date("Y-m-d");
@@ -38,7 +38,7 @@
                           echo $row['today_order'];
                         ?>
                         </h3>
-        
+
                         <p>Today's New Orders</p>
                       </div>
                       <div class="icon">
@@ -53,7 +53,7 @@
                     <div class="small-box bg-primary">
                       <div class="inner">
                         <h3>125</h3>
-        
+
                         <p>Customers</p>
                       </div>
                       <div class="icon">
@@ -68,7 +68,7 @@
                     <div class="small-box bg-info">
                       <div class="inner">
                         <h3>44</h3>
-        
+
                         <p>Products</p>
                       </div>
                       <div class="icon">
@@ -83,7 +83,7 @@
                     <div class="small-box bg-danger">
                       <div class="inner">
                         <h3>65</h3>
-        
+
                         <p>Category</p>
                       </div>
                       <div class="icon">
@@ -98,7 +98,7 @@
                         <div class="small-box bg-info">
                           <div class="inner">
                             <h3>150</h3>
-            
+
                             <p>Last 7 day's Orders</p>
                           </div>
                           <div class="icon">
@@ -123,7 +123,7 @@
                         <div class="small-box bg-success">
                           <div class="inner">
                             <h3>150</h3>
-            
+
                             <p>Last 7 day's Orders</p>
                           </div>
                           <div class="icon">
@@ -133,7 +133,7 @@
                         </div>
                 </div>
             </div>
-            
+
     </section>
   </div>
 </div>

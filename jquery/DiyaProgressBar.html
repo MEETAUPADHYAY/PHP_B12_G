@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery Lesson @ The easylearn academy</title>
+    <style>
+        <!-- div  -->
+        <!-- { -->
+           
+            <!-- float:left; -->
+            <!-- margin-right: 20px; -->
+            <!-- position: absolute; -->
+            <!-- top:50px; -->
+            <!-- padding:10px,20px,10px,20px; -->
+        <!-- } -->
+    </style>
+</head>
+<body>
+    <button id="top" >top</button>
+    <button id="bottom" >bottom</button>
+    <button id="left" >left</button>
+    <button id="right" >right</button>
+    <button id="stop" >stop</button>
+    <button id="chain" >Rotate clock wise</button>
+    <button id="arti" >ARTI</button>
+    
+    <button onclick="fun_name();">Animate</button>
+    
+    <!-- <div id="mydiv">Click Me</div>  -->
+    <br/>
+    Time to Complete: <progress id="Ptc" max="5000" value="5000"></progress>
+  <br/>
+    Completed progress : <progress id="Pcp" value="0"></progress>
+    
+    <br/>
+    <div id="diya"><img id="diya" src="diya.jpg" border="2px"/></div>
+    <script src="jquery.js"></script>
+    <script>
+        var duration = 3000;
+        $(document).ready(function()
+        {
+            <!-- $("body").on("click","#top",function(){ -->
+                <!-- $("#mydiv").animate({top:'50px'},duration,"linear"); -->
+            <!-- }); -->
+            <!-- $("body").on("click","#bottom",function(){ -->
+                <!-- $("#mydiv").animate({top:'500px'},duration,"linear"); -->
+            <!-- }); -->
+            <!-- $("body").on("click","#left",function(){ -->
+                <!-- $("#mydiv").animate({left:'0px'},duration,"linear"); -->
+            <!-- }); -->
+            <!-- $("body").on("click","#right",function(){ -->
+                <!-- $("#mydiv").animate({left:'1000px'},duration,"linear"); -->
+            <!-- }); -->
+            <!-- $("body").on("click","#stop",function(){ -->
+                <!-- $("#mydiv").stop(); -->
+            <!-- }); -->
+            $("body").on("click","#arti",function(){
+                $("#diya").animate({left:'1000px'},duration,"linear").animate({top:'500px'},duration,"linear").animate({left:'0px'},duration,"linear").animate({top:'50px'},duration,"linear");
+            });
+            <!-- $("body").on("click","#stop",function(){ -->
+                <!-- $("#diya").animate({bottom:'50px'},duration,"swing"); -->
+            <!-- }); -->
+            <!-- $("body").on("click","#arti",function(){ -->
+                <!-- $("img").animate({bottom:'1000px'}, -->
+                    <!-- duaration, -->
+                    <!-- "liner",  -->
+                    <!-- complete: function() {console.log("It is working");}); -->
+                    <!-- } -->
+                <!-- }); -->
+        });
+        
+    function fun_name()
+    {
+     $("#diya").animate({"margin-top":"50px"},{
+      duration:5000
+      ,easing:"linear"
+      ,specialEasing:{top:'swing',left:'linear'}
+      ,queue:false
+      ,step:function(step,b){  }
+      ,progress:function(a,prog,ms){
+       $("#Ptc").val(ms);
+       $("#Pcp").val(prog);
+     }
+     ,complete:function(){ alert("Completed"); }
+     });
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <form>
+        <table align=center border="2" cellpadding=5 width=80%>
+            <tr>
+                <td colspan="2" align="center">
+                    MEASUREMENTS OF TRIANGLE
+                </td>
+			</tr>
+			<tr>
+                <td>
+                    Enter side 1(length):
+                </td>
+                <td>
+                    <input type="text" id="txtside1" >
+                </td>
+              
+            </tr>
+            <tr>
+                <td>
+                    Enter side 2(breadth):
+                </td>
+                <td>
+                    <input type="text"  id="txtside2" >
+                </td>
+               
+            </tr>
+            <tr>
+                <td>
+                    Enter side 3(height):
+                </td>
+                <td>
+                    <input type="text"  id="txtside3" >
+                </td>
+               
+            </tr>
+            <tr>
+                <td colspan="2" align="center" id='output'>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center">
+                    <input type="button" value="PERIMETER" id='btnperimeter' onclick="perimeter()" />
+                    <input type="button" value="AREA" id='btnarea' onclick="area()"  />
+                    
+                </td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        var side1,side2, side3;
+        function getInput()
+        {
+            side1 = parseInt(getValue("txtside1"));
+            side2 = parseInt(getValue("txtside2"));
+            side3 = parseInt(getValue("txtside3"));
+        }
+        function $(id)
+        {
+            return document.getElementById(id);
+        }
+        function getValue(id)
+        {
+            return $(id).value;
+        }
+        function perimeter()
+        {
+            getInput();
+            var result = side1 + side2 + side3;
+            $("output").innerHTML = "Perimeter of the triangle is " + result;
+        }
+        function area()
+        {
+            getInput();
+            var result = side1 * side2 * side3;
+            $("output").innerHTML = "Area of the triangle is " + result;
+        }
+        function draw() 
+        {   
+          var canvas = document.getElementById('canvas');
+          if (canvas.getContext)
+          {
+            var context = canvas.getContext('2d');
+
+            context.beginPath();
+            context.moveTo(75,75);
+            context.lineTo(10,75);
+            context.lineTo(10,25);
+            context.fill();
+          }
+        }
+    </script>
+</body>
+</html>

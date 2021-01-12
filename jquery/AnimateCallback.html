@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery Lesson @ The easylearn academy</title>
+    <style>
+        img 
+       {
+        right: 50%;
+        bottom: 50%;
+        transform: translate(50%,50%);
+        position: absolute;
+       }
+    </style>
+</head>
+<body>
+    <img src="Lighthouse.jpg"  />
+    <script src="jquery.js"></script>
+    <script>
+        var duration = 3000;
+        $(document).ready(function()
+        {
+            var duration = 700;
+            $("img").hover(function(){
+                //alert("hi");
+                $("img").animate({
+                    height:"50%",
+                    width:"55%",
+                },duration,function(){
+                    $("img").animate({
+                    height:"100%",
+                    width:"100%",
+                },duration);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

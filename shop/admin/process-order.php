@@ -1,5 +1,5 @@
 <?php  
-	require_once('inc/header_part.php'); 
+	require_once('../inc/header_part.php'); 
 	require_once('../inc/connection2.php'); 
 ?>
 </head>

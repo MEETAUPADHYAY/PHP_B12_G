@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kick the Ball</title>
+    <style>
+        img 
+       {
+        //right: 50%;
+        //bottom: 50%;
+        transform: translate(50%,50%);
+        position: absolute;
+        width:20%;
+        height:20%;
+       }
+    </style>
+</head>
+<body>
+    <img src="football.png" id="throw" />
+    <button id="btnclick">Throw</button>
+    <script src="jquery.js"></script>
+    <script>        
+        $(document).ready(function()
+        {
+            var duration = 400;
+            $("#btnclick").click(function(){    
+                //alert("click");
+                $("#throw").animate({right:'50px'},duration,"linear",function(){
+                    $("#throw").animate({left:'50px'},duration,"linear");
+                });
+            });            
+        });
+    </script>
+</body>
+</html>

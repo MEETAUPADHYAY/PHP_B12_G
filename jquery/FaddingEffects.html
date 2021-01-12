@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery Lesson @ The easylearn academy</title>
+    <style>
+        div 
+        {
+            height:250px;
+            width:250px;
+            border:2px solid red;
+            background-color: yellow;
+            box-shadow: black 2px 2px 2px;
+            float:left;
+            margin-right: 20px;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <p>
+        <button id="fadein" >Fade In</button>
+        <button id="fadeout">Fade out</button>
+        <button id="fadetoggle">Fade Toggle</button>
+        <button id="fadeto">Fade To</button>
+    
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+    </p>
+    
+    <img  src="desert.jpg" alt="picture" border="2px" height="50%" width="50%"/>
+       
+    <script src="jquery.js"></script>
+    <script>
+        var duration = 3000;
+        $(document).ready(function(){
+            $("#fadeout").click(function(){
+                $("#div1").fadeOut(); //default speed 
+                $("#div2").fadeOut("slow"); //slow speed 
+                $("img").fadeOut("slow");
+                $("#div3").fadeOut(duration,function(){
+                    //alert("div3 has been fadeout successfully");
+                }); 
+            });
+            
+            $("#fadein").click(function(){
+                $("#div1").fadeIn(); //default speed 
+                $("#div2").fadeIn("slow"); //slow speed 
+                $("img").fadeIn("slow");
+                $("#div3").fadeIn(duration,function(){
+                    //alert("div3 has been fadeIn successfully");
+                });  
+            });
+            
+            $("#fadetoggle").click(function(){
+                $("#div1").fadeToggle(); //default speed 
+                $("#div2").fadeToggle("slow"); //slow speed
+                $("img").fadeToggle("slow");                
+                $("#div3").fadeToggle(duration,function(){
+                    alert("div3 has been fadeToggle successfully");
+                }); 
+            });
+            
+            $("#fadeto").click(function(){
+                $("#div1").fadeTo(duration,0.50); //default speed 
+                $("#div2").fadeTo(duration,0.25); 
+                $("#div3").fadeTo(duration,0.10,function(){
+                    alert("div3 has been fadeTo successfully");
+                }); 
+            });
+            
+            
+        });
+    </script>
+</body>
+</html>

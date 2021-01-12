@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery Lesson @ The easylearn academy</title>
+    <style>
+        div 
+        {
+            height:200px;
+            width:200px;
+            border:2px solid red;
+            background-color: yellow;
+            font-size: 2rem;
+        }
+        table,tr,td
+        {
+            height:100px;
+            width:800px;
+            border:3px solid blue;
+            background-color:red;
+            font-size:3rem;
+        }
+    </style>
+</head>
+<body>
+    <div>The easylearn academy</div>
+    <table>
+        <tr>
+            <td>Row -1 Column -1</td>
+            <td>Row -1 Column -2</td>
+            <td>Row -1 Column -3</td>
+        </tr>
+        <tr>
+            <td>Row -2 Column -1</td>
+            <td>Row -2 Column -2</td>
+            <td>Row -2 Column -3</td>
+        </tr>
+        <tr>
+            <td>Row -3 Column -1</td>
+            <td>Row -3 Column -2</td>
+            <td>Row -3 Column -3</td>
+        </tr>
+        <tr>
+            <td>Row -4 Column -1</td>
+            <td>Row -4 Column -2</td>
+            <td>Row -4 Column -3</td>
+        </tr>
+    </table>
+    <script src="jquery.js"></script>
+    <script>
+        $(document).ready(function()
+        {
+            ShrinkAndGrow();    
+        });
+        function ShrinkAndGrow()
+        {
+            $("div").toggle(2000,function(){
+                ShrinkAndGrow();
+            });
+            $("table").toggle(2000,function(){
+                ShrinkAndGrow();
+            });
+        }
+       
+    </script>
+</body>
+</html>
